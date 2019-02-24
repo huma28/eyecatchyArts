@@ -1,0 +1,81 @@
+<footer class=" panel footer" id="footer">
+  <div class="container">
+    <div class="text-center">
+      <a href="#">
+        <img src="assets/images/other/logo.png" style="width:150px; height:50px" alt="" />
+      </a>
+    </div>
+    <div class="row footer-nav">
+      <div class="col-3">
+        <p>
+          <a [routerLink]="footer[0].navigateTo">Home</a>
+        </p>
+        <ul>
+          <li>
+            <span>Be The First To See Our New CREATIVITY</span>
+          </li>
+        </ul>
+      </div>
+      <div class="col-3">
+        <p>
+          <a [routerLink]="footer[1].navigateTo">About Us</a>
+        </p>
+        <ul>
+          <li>
+            <span>Who We Are</span>
+          </li>
+          <li>
+            <span>About Us</span>
+          </li>
+        </ul>
+      </div>
+      <div class="col-3">
+        <p>
+          <a [routerLink]="footer[2].navigateTo">Gallery</a>
+        </p>
+        <ul>
+          <li>
+            <span>Gallery</span>
+          </li>
+        </ul>
+      </div>
+      <div class="col-3">
+        <p>
+          <a [routerLink]="footer[3].navigateTo">Specification</a>
+        </p>
+        <ul>
+          <li>
+            <span>Specifications</span>
+          </li>
+        </ul>
+      </div>
+      <div class="col-3">
+          <p>
+            <a [routerLink]="footer[4].navigateTo">Contact Us</a>
+          </p>
+          <ul>
+            <li>
+              <span>Contact Us</span>
+            </li>
+          </ul>
+        </div>
+    </div>
+
+    <div class="social-icons">
+      <a (click)="goTo('https://www.facebook.com/eyecatchy.arts/')">
+        <i class="fa fa-facebook" aria-hidden="true"></i>
+      </a>
+      <a (click)="goTo('https://www.instagram.com/eyecatchy_arts/')">
+        <i class="fa fa-instagram" aria-hidden="true"></i>
+      </a>
+      <a (click)="goTo('https://twitter.com/EyecatchyA')">
+        <i class="fa fa-twitter" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>www.eyecatchyarts.com | All Rights Reserved</p>
+    </div>
+  </div>
+</footer>
