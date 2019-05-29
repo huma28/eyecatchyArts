@@ -15,7 +15,7 @@
 
 <section class="panel services-section" id="services-section">
     <div class="container">
-        <div class="home-content-div">
+        <!-- <div class="home-content-div">
             <h2 class="main-heading">Contact us</h2>
             <div class="contectForm">
                 <form class="formContact" #buyForm="ngForm" (ngSubmit)="onSubmit(paintingForm, template1, templateModal)">
@@ -64,9 +64,11 @@
                     </div>
                     <button type="submit" class="btn btn-default" [disabled]="buyForm.invalid">Submit</button>
                     <button type="submit" class="btn btn-default" onClick="onSubmit()" >Submitt</button>
+                    <make-payment></make-payment>
                 </form>
             </div>
-        </div>
+        </div> -->
+        <make-payment></make-payment>
         <a href="#update-section" class="scroll-btn dark">
             <span></span>
         </a>

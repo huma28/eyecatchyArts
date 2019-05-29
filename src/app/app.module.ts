@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { ModalModule } from 'ngx-bootstrap';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -18,6 +19,9 @@ import { BannerComponent } from './components/banner/banner.component';
 import { routes } from './app.routes';
 import { environment } from '../environments/environment';
 import * as firebase from 'firebase';
+import { MakePaymentComponent } from './modules/payments/make-payment-component';
+import { PaymentService } from './modules/payments/payment.service';
+// import {PaymentModule} from './modules/payments/PaymentModule';
 
 firebase.initializeApp(environment.firebase);
 
@@ -32,6 +36,7 @@ firebase.initializeApp(environment.firebase);
     SpecificationComponent,
     BannerComponent,
     ContectUsComponent,
+    MakePaymentComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,8 +47,10 @@ firebase.initializeApp(environment.firebase);
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     FormsModule,
+    AngularFireAuthModule,
+    // PaymentModule,
   ],
-  providers: [],
+  providers: [PaymentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
