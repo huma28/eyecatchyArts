@@ -1,27 +1,56 @@
 <!--header-->
 <header class="header">
   <nav class="navbar navbar-default">
-    <div class="container">
+    <div class="">
+      <div class="top-header hidden-xs">
+        <div class="number hidden-sm">
+            <i class="fa fa-phone" aria-hidden="true"></i>
+          8094494948
+        </div>
+        <div class="name">
+          EyecatchyArt
+        </div>
+        <div class="book">
+          <app-button [text]="button.buttonText" [border]="button.borderColor" [textColor]="button.textColor"></app-button>
+        </div>
+      </div>
       <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+      <div class="navbar-header header-mobile">
+        <button type="button" class="navbar-toggle collapsed icon-left" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" [routerLink]="['home']">
-          <img src="assets/images/other/logo.png" alt="" style="width:150px; height:50px" />
-        </a>
+        <div class="webName hidden-md">
+          EyecatchyArt
+        </div>
+        <button type="button" class="navbar-toggle collapsed icon-dot" data-toggle="collapse" data-target="#navbar-collapse-2" aria-expanded="false">
+          <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+        </button>
       </div>
-      <div class="collapse navbar-collapse" id="navbar-collapse-1">
-        <div class="navbar-right">
+      <div class="collapse navbar-collapse header-nav" id="navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li *ngFor="let header of headers; let i = index">
               <a class="collapsed" [routerLink]="header.navigateTo" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" data-toggle="collapse" aria-expanded="false">{{header.name}}</a>
             </li>
           </ul>
-        </div>
+      </div>
+
+
+      <!--==== -->
+      <div class="collapse navbar-collapse header-nav" id="navbar-collapse-2">
+        <ul class="nav navbar-nav">
+          <li>
+            <div class="number">
+              <i class="fa fa-phone" aria-hidden="true"></i>
+              8094494948
+            </div>
+          </li>
+          <li>
+            <app-button [text]="button.buttonText" [border]="button.borderColor" [textColor]="button.textColor"></app-button>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>

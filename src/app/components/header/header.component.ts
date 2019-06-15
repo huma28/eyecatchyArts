@@ -10,6 +10,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class HeaderComponent implements OnInit {
   headers: object[];
   public isCollapsed: boolean;
+ 
+  button={
+    buttonText:"Book Now",
+    borderColor: "#e8e1d8",
+    textColor: "#FEC051",
+  }
 
   constructor(public router: Router) { 
      this.headers = AppConfig.MENUS;

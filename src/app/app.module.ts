@@ -17,6 +17,8 @@ import { SpecificationComponent } from './pages/specification/specification.comp
 import { BannerComponent } from './components/banner/banner.component';
 import { routes } from './app.routes';
 import { environment } from '../environments/environment';
+
+import { ButtonComponent } from 'app/components/button/button.component';
 import * as firebase from 'firebase';
 
 firebase.initializeApp(environment.firebase);
@@ -32,6 +34,7 @@ firebase.initializeApp(environment.firebase);
     SpecificationComponent,
     BannerComponent,
     ContectUsComponent,
+    ButtonComponent,
   ],
   imports: [
     BrowserModule,

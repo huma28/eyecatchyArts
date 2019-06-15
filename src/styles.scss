@@ -6,6 +6,16 @@
   body {
       font-family: 'HelveticaNeueLTStd-Roman';
   }
+  h1 {
+      font-size: 45px;
+      font-weight: bold;
+  }
+  p {
+      font-size: 20px;
+  }
+  .paddingMain {
+      padding: 80px
+  }
   .main-heading{
       color: #fff;
   }
@@ -16,7 +26,7 @@
       z-index: 9;
   }
   .header .navbar-default {
-      background-color: rgba(47, 47, 47, 0.79);
+    //   background-color: rgba(47, 47, 47, 0.79);
       border: 0;
       border-radius: 0;
   }
@@ -30,8 +40,11 @@
   .navbar-collapse{
     //   background-color: #000;
   }
+  .navbar-header:before {
+    display: none;
+  }
   .navbar-default .navbar-nav>li>a {
-      color: #fff;
+      columns: #000000;;
       font-family: 'HelveticaNeueLTStd-Roman';
       font-size: 16px;
       text-transform: uppercase;
@@ -56,7 +69,8 @@
       margin-left: 90px;
   }
   .navbar-default .navbar-toggle {
-      margin-top: 20px;
+      margin: 0;
+      border: none;
   }
   .panel{
       margin-bottom: 0;
@@ -558,9 +572,9 @@
       height: 164px;
   }
   .right-col {
-      float: right;
-      width: 100%;
-      max-width: 460px;
+    //   float: right;
+    //   width: 100%;
+    //   max-width: 460px;
   }
   .contact-section .btn-orange {
       min-width: 196px;
@@ -691,7 +705,7 @@
       text-decoration:none;
   }
   i {
-      border: solid #fff;
+    //   border: solid #fff;
       border-width: 0 3px 3px 0;
       display: inline-block;
       padding: 7px;
@@ -839,4 +853,44 @@
 // }
 .modal-content{
     background-color: rgba(31, 28, 28, 0.85);
+}
+
+.about-us {
+    .photo1 {
+        .img {
+            background-image: url(./assets/images/other/huma.jpg);
+        }
+    }
+    .photo2 {
+        .img {
+            background-image: url(./assets/images/other/rahil.jpg);
+        }
+    }
+    .right-aboutus {
+        position: relative;
+        height: 350px;
+        padding-left: 20%;
+        background-image: url(./assets/images/other/back-img.svg);
+        .img {
+            position: absolute;
+            background-size: cover;
+            background-repeat: no-repeat;
+            width: 60%;
+            height: 80%;
+            top: 59px;
+            left: 93px;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .paddingMain {
+        padding: 20px;
+    }
+    h1 {
+        font-size: 30px;
+    }
+    p {
+        font-size: 18px;
+    }
 }

@@ -1,31 +1,71 @@
-.header-wrapper{
-    background-color: rgba(49, 112, 143,0.7);
-    position: fixed;
-    z-index: 9;
-    padding: 5px 0;
-    width: 100%;
+.top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 15px;
+  background-color: #fff;
+  .number {
+    letter-spacing: 2px;
+    i {
+      border: none;
+      font-size: 20px;
+      color: #FEC051;
+    }
+  }
+  .name {
+    font-family: 'Oregano', cursive;
+    font-size: 30px;
+    letter-spacing: 2px;
+    font-weight: bold;
+  }
 }
-.header-row{
-    display: flex;
-    .header-left{
-        flex: 1;
-        img{
-            width: 150px;
-            height: 60px;
-        }
+.header-nav {
+  // background-color:#e8e1d8;
+  text-align: center;
+  .navbar-nav {
+    float: none;
+    display: inline-block;
+  }
+}
+
+@media (max-width: 767px) {
+  .top-header {
+    justify-content: center;
+  }
+  .icon-left {
+    float: left;
+  }
+  .navbar-collapse::after {
+    display: none;
+  }
+  .navbar-header:before {
+    display: none;
+  }
+  .header-mobile {
+    position: relative;
+    padding: 0 20px;
+    height: 55px;
+    button {
+      height: 35px;
+    margin-top: 10px;
     }
-    .header-right{
-        flex: 1;
-        ul{
-            list-style: none;
-            display: flex;
-            justify-content: space-between;
-            height: 100%;
-            align-items: center;
-            font-weight: 600;
-            a{
-                color: #fff;
-            }
-        }
+    .icon-dot {
+      padding: 0;
+      font-size: 20px;
     }
+    .webName {
+      display: table;
+      position: absolute;
+      top: 50%;
+      margin-top: -15px;
+      left: 50%;
+      width: 40%;
+      margin-left: -20%;
+      text-align: center;
+      font-family: 'Oregano', cursive;
+      font-size: 20px;
+      letter-spacing: 2px;
+      font-weight: bold;
+    }
+  }
 }
