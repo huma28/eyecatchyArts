@@ -15,18 +15,18 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     
+    
   }
   @HostListener("window:scroll", [])
   onWindowScroll() {
   //we'll do some stuff here when the window is scrolled
 
   let height = document.getElementById('animateDiv');
-  console.log('height------', height.offsetHeight, height.offsetTop, window.pageYOffset);
+  // console.log('height------', height.offsetHeight, height.offsetTop, window.pageYOffset);
   let scroll = window.pageYOffset;
-  if (scroll > 750){
-    // height.classList.remove('hidden');
-    height.classList.add('animate');
+    if (scroll > 500) {
+      height.classList.remove('opacityZero');
+      height.classList.add('animate');
+    }
   }
-  }
-
 }

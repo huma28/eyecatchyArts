@@ -11,7 +11,9 @@
           EyecatchyArt
         </div>
         <div class="book">
-          <app-button [text]="button.buttonText" [border]="button.borderColor" [textColor]="button.textColor"></app-button>
+          {{cartCount}}
+          <!-- <app-button [text]="button.buttonText" [border]="button.borderColor" [textColor]="button.textColor"></app-button> -->
+          <a routerLink="/cart"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i></a>
         </div>
       </div>
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -22,7 +24,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <div class="webName hidden-md">
+        <div class="webName visible-xs">
           EyecatchyArt
         </div>
         <button type="button" class="navbar-toggle collapsed icon-dot" data-toggle="collapse" data-target="#navbar-collapse-2" aria-expanded="false">
@@ -32,26 +34,17 @@
       <div class="collapse navbar-collapse header-nav" id="navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li *ngFor="let header of headers; let i = index">
-              <a class="collapsed" [routerLink]="header.navigateTo" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" data-toggle="collapse" aria-expanded="false">{{header.name}}</a>
+              <a class="collapsed" [routerLink]="header.navigateTo" (click)="navLinkClicked()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" data-toggle="collapse" aria-expanded="false">{{header.name}}</a>
+            </li>
+            <li>
+              <div class="number visible-xs">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                8094494948
+              </div>
             </li>
           </ul>
       </div>
-
-
       <!--==== -->
-      <div class="collapse navbar-collapse header-nav" id="navbar-collapse-2">
-        <ul class="nav navbar-nav">
-          <li>
-            <div class="number">
-              <i class="fa fa-phone" aria-hidden="true"></i>
-              8094494948
-            </div>
-          </li>
-          <li>
-            <app-button [text]="button.buttonText" [border]="button.borderColor" [textColor]="button.textColor"></app-button>
-          </li>
-        </ul>
-      </div>
     </div>
   </nav>
 </header>

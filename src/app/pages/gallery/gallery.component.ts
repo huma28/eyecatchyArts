@@ -1,18 +1,21 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+// import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { Router } from '@angular/router';
+import { AwesomeShopService } from '../../../services/awesomeShope.service';
+import { FirebaseService } from '../../app.firebase.service';
 
 import { PictureConfig } from '../../pictureConfig';
 
-import * as TNSPhone from 'nativescript-phone';
 @Component({
   selector: 'app-gallery',
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.scss']
 })
+
 export class GalleryComponent implements OnInit {
-  modalRef: BsModalRef;
+  // modalRef: BsModalRef;
   multiSlider: object[];
   url: any;
   paintingData: any;
@@ -27,40 +30,65 @@ export class GalleryComponent implements OnInit {
     dateMsg: '',
   }
   paintingRequestList: AngularFireList<any>;
-  constructor(private modalService: BsModalService, public db: AngularFireDatabase) {
-    this.multiSlider = PictureConfig.multiSlider;
 
+  listingData: any;
+  page: number = 1;
+  paitingsList = [];
+  paitingDetail = [];
+  
+  constructor(private modalService: BsModalService,
+              public db: AngularFireDatabase,
+              private router: Router,
+              private awesomeShopService: AwesomeShopService,
+              private firebaseService:FirebaseService) {
+                  this.multiSlider = PictureConfig.multiSlider;
+  }
+  // openModalImg(template: TemplateRef<any>, url) {
+  //   this.url = url;
+  //   // this.modalRef = this.modalService.show(template);
+  // }
+  // openModalBuy(template: TemplateRef<any>, data ) {
+  //   this.paintingForm = {
+  //     name: '',
+  //     email: '',
+  //     phone: '',
+  //     address: '',
+  //     message: '',
+  //     paintingName: '',
+  //     dateMsg: '',
+  //   }
+  //   this.formDataSaved = false;
+  //   this.paintingData = data;
+  //   // this.modalRef = this.modalService.show(template);
+  // }
+  // openSuccessModal(template) {
+  //   // this.modalRef = this.modalService.show(template);
+  // }
 
-  }
-  openModalImg(template: TemplateRef<any>, url) {
-    this.url = url;
-    this.modalRef = this.modalService.show(template);
-  }
-  openModalBuy(template: TemplateRef<any>, data ) {
-    this.paintingForm = {
-      name: '',
-      email: '',
-      phone: '',
-      address: '',
-      message: '',
-      paintingName: '',
-      dateMsg: '',
-    }
-    this.formDataSaved = false;
-    this.paintingData = data;
-    this.modalRef = this.modalService.show(template);
-  }
-  openSuccessModal(template) {
-    this.modalRef = this.modalService.show(template);
-  }
   ngOnInit() {
     // call function of get all list of painting request form here
     this.getPaintingRequestList();
+    this.getList(1);  //test
+    this.getAllPaintings();
   }
+  getAllPaintings() {
+    var x = this.firebaseService.getBanner();
+    x.snapshotChanges().subscribe(item => {
+      item.forEach(element => {
+        var y = element.payload.toJSON();
+        y["$key"] = element.key;
+        this.paitingsList.push(y);
+      })
+      // console.log('list here-----', this.paitingsList);
+    })
+  }
+
   getPaintingRequestList() {
     this.paintingRequestList = this.db.list('paintingRequestList');
+    // console.log('painting list---------', this.paintingRequestList);
     return this.paintingRequestList;
   }
+
   onSubmit(data, templateForm, templateModal: TemplateRef<any>) {
     this.paintingForm.paintingName = this.paintingData.name;
     const date = new Date();
@@ -68,23 +96,26 @@ export class GalleryComponent implements OnInit {
     this.paintingRequestList.push(
       this.paintingForm
     ).then((data) =>{
-      this.modalRef.hide();
-      this.openSuccessModal(templateModal);
+      // this.modalRef.hide();
+      // this.openSuccessModal(templateModal);
 
     });
     this.formDataSaved = true;
   }
 
-  //   public send() {
-  //     if(this.input.recipient != "" && this.input.message != "") {
-  //         TNSPhone.sms([this.input.recipient], this.input.message).then(result => {
-  //                 console.dir(result);
-  //                 this.input.recipient = "";
-  //                 this.input.message = "";
-  //             }, error => {
-  //                 console.dir(error);
-  //             });
-  //     }
-  // }
+  clickOnItem(id) {
+    this.router.navigate(['detail', id]);
+  }
+
+  // ----------testing API
+  getList(page) {
+    this.awesomeShopService.getList(page)
+      .subscribe((response) => {
+        // console.log('SUCCESSSS', response);
+        this.listingData = response.products;
+        this.page = page;
+      }, (error: Response) => {
+      });
+  }
 
 }

@@ -1,0 +1,58 @@
+<div class="detail-main">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 slider-div">
+              <ngx-gallery [options]="galleryOptions" [images]="galleryImages" class="carousel"></ngx-gallery>
+            </div>
+            <div class="col-md-4 right-div-detail">
+              <div class="card-section">
+                <h4>Painting Name</h4>
+                <!-- <p>{{ (detailData.description.length > 120 && !more) ? detailData.description.slice(0, 120) :detailData.description}}</p> -->
+                <p>Description here lorem ipsum Description here lorem ipsum Description here lorem ipsum</p>
+                <!-- <span *ngIf="detailData.description.length > 150" (click)="more=!more" class="more">{{more ? '-LESS' : '+MORE'}}</span> -->
+              </div>
+              <div class="card-section">
+                <div class="rupees">
+                  <!-- <span>{{detailData.showData.sale_price | currency:"&#8377;"}} </span> -->
+                  <span> $20 </span>
+                  <del class="delete-text">$40</del>
+                </div>
+                <div class="sub-heading">Sale message here</div>
+                <p>local taxes include </p>
+              </div>
+              <div class="bottom-section">
+                <div class="colors-div">
+                  <div class="sub-heading"> 4 colors are available</div>
+                  <!-- <ul>
+                    <li *ngFor="let color of detailData.colors" class="color">
+                      <div (click)="changeColor(color._id)" [ngClass]='{active: detailData.showData.sign[1] == color._id}' class="">
+                        <span class="color-circle" [ngStyle]="{'background-color':color.name}"></span>
+                        <span>{{color.name}}</span>
+                      </div>
+                    </li>
+                  </ul> -->
+                </div>
+                <div class="size-div">
+                  <div class="sub-heading"> 6 size are available</div>
+                  <!-- <ul>
+                    <li *ngFor="let size of detailData.sizes" class="size">
+                      <div (click)="changeSize(size._id)" [ngClass]='{active: detailData.showData.sign[0] == size._id}'>{{size.name}}</div>
+                    </li>
+                  </ul> -->
+                </div>
+                <div class="">
+                  <div class="sub-heading">Quatity</div>
+                  <div class="btn-group btn-group-sm quantity" role="group" aria-label="Basic example">
+                    <button type="button" class="btn" (click)="count=count-1">-</button>
+                    <button type="button" class="btn">{{count}}</button>
+                    <button type="button" class="btn" (click)="count=count+1">+</button>
+                  </div>
+                </div>
+                <div class="cart-btn">
+                  <button type="button" class="btn btn-lg btn-block" (click)="addToCart()">Add to cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>

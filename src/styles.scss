@@ -9,9 +9,23 @@
   h1 {
       font-size: 45px;
       font-weight: bold;
+      position: relative;
+      &::after {
+        content: "";
+        position: absolute;
+        width: 25px;
+        height: 2px;
+        bottom: 0;
+        left: 5px;
+        background-color: #eabc42;
+      }
   }
   p {
-      font-size: 20px;
+      font-size: 25px;
+  }
+  .container {
+      max-width: 1440px;
+      margin: 0 auto;
   }
   .paddingMain {
       padding: 80px
@@ -556,12 +570,12 @@
       margin-bottom: 18px;
   }
   .contact-section .form-control {
-      min-height: 52px;
-      background-color: rgba(47, 62, 66, 0.5);
-        border: solid 1px rgba(251, 249, 249, 0.5);
-        border-radius: 0;
-        max-width: 460px;
-      color: white;
+    //   min-height: 52px;
+    //   background-color: rgba(47, 62, 66, 0.5);
+    //     border: solid 1px rgba(251, 249, 249, 0.5);
+    //     border-radius: 0;
+    //     max-width: 460px;
+    //   color: white;
   }
   .contact-section label {
       font-size: 18px;
@@ -822,7 +836,7 @@
   }
 //   .......................
 .back-picture{
-    background-color: #000;
+    // background-color: #000;
 }
 .about-profile{
     display: inline-flex;
@@ -869,16 +883,17 @@
     .right-aboutus {
         position: relative;
         height: 350px;
-        padding-left: 20%;
+        // padding-left: 20%;
         background-image: url(./assets/images/other/back-img.svg);
+        background-position: center;
         .img {
             position: absolute;
             background-size: cover;
             background-repeat: no-repeat;
-            width: 60%;
+            width: 65%;
             height: 80%;
-            top: 59px;
-            left: 93px;
+            top: 0;
+            right: 0;
         }
     }
 }
@@ -892,5 +907,27 @@
     }
     p {
         font-size: 18px;
+    }
+}
+
+////////////////////////   detail page of gallary
+.ngx-gallery-image.ngx-gallery-active {
+     z-index: auto!important;
+     background-size: contain!important;
+}
+ngx-gallery-thumbnails {
+    margin-top: 5px!important;
+    height: calc(20% - 10px)!important;
+}
+.ngx-gallery-thumbnail {
+    width: calc(25% - 3.5px)!important;
+}
+.ngx-gallery-image {
+     background-color: #f3f3f3;
+}
+
+@media (max-width: 767px) { 
+    ngx-gallery-image {
+        height: 50%!important;
     }
 }

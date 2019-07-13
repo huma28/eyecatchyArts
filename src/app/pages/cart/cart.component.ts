@@ -4,16 +4,16 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ShoppingCartService } from 'services/shoppingCart.service';
 import { Subscription } from 'rxjs/Subscription';
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
+  selector: 'app-cart',
+  templateUrl: './cart.component.html',
+  styleUrls: ['./cart.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class CartComponent implements OnInit {
   headers: object[];
   public isCollapsed: boolean;
   cartCount = 0;
-  subscription: Subscription;
- 
+  cartList: Subscription;
+  list:any;
   button={
     buttonText:"Book Now",
     borderColor: "#e8e1d8",
@@ -23,11 +23,12 @@ export class HeaderComponent implements OnInit {
   constructor(public router: Router,  public shoppingCartService: ShoppingCartService) { 
      this.headers = AppConfig.MENUS;
 
-     this.subscription = this.shoppingCartService.getSubjectForCart().subscribe(message => { 
-       console.log('huma', message); 
-       this.cartCount = message.value;
+     this.cartList = this.shoppingCartService.getSubjectForCart().subscribe(message => { 
+        this.cartCount = message.value;
+        // this.list = message.list;
+        console.log('huma-----------------------', this.list); 
       });
-     console.log('in header-----', this.shoppingCartService.subjectValue );
+    //  console.log('in header-----', this.shoppingCartService.subjectValue );
     //  this.shoppingCartService.subjectValue.subscribe((subjectValue: any) => {
     //   console.log('hey subject working', subjectValue);
     //   this.cartCount = subjectValue;
@@ -44,6 +45,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.isCollapsed = true;
+    this.list = this.shoppingCartService.getProductList();
   }
 
 }

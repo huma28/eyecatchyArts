@@ -7,18 +7,19 @@
         overflow-x: scroll;
         overflow-y: hidden;
         display: flex;
-        align-items: center;
+        // align-items: center;
         height: 500px;
         .card {
             min-width: 30%;
             min-height: 95%;
-            scroll-snap-align: center;
+            scroll-snap-align: start;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100%;
             overflow: hidden; 
             .inner-div {
+                position: relative;
                 width: 100%;
                 height: 100%;
                 display: flex;
@@ -53,6 +54,15 @@
                 // }
             }
         }
+    }
+    .borderDiv {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 20px;
+        border: 1px solid #fff;
     }
 }
 @media (max-width: 767px) { 

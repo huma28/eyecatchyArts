@@ -13,10 +13,21 @@
     </div>
   </section>
   <section class="about-us">
-    <div class="paddingMain hidden" id="animateDiv">
-      <div class="row" >
-        <div class="col-md-6">
-          <h1>About us</h1>
+    <div class="paddingMain opacityZero" id="animateDiv">
+      <h1>About us</h1>
+      <div class="row mainAbout ">
+        <div class="col-md-6 order">
+          <div>
+              <div class="aboutFounder">
+                  <div class="name">Huma Sadiya</div>
+                  <div class="occupation">(Founder of eyecatchyArts)</div>
+              </div>
+              <p>Intelligence will never stop being beautiful, learn as much as you can, as you have to exercise daily
+                  to keep your body in shape, You have to read and learn on a daily basis, never waste your single
+                  minute because time is money. We are here for purpose, We are here to do something big, don’t be a product of your surroundings, be a product of
+                  your own decisions.</p>
+            
+          </div>
         </div>
         <div class="col-md-6">
           <div class="right-aboutus photo1">
@@ -24,9 +35,18 @@
           </div>
         </div>
       </div>
-      <div class="row">
-          <div class="col-md-6">
-            <h1>About us</h1>
+      <div class="row mainAbout">
+          <div class="col-md-6 order">
+            <div>
+                <div class="aboutFounder">
+                    <div class="name">Rahil Mujahid</div>
+                    <div class="occupation">(Founder of eyecatchyArts)</div>
+                </div>
+                <p>I believe we must have dream in our life, because dream is the first step of your grand success, Just if you can’t hustle don’t even bother to grind, life is all about
+                    learning and knowledge the more you gain the more powerful you will be, Come on don’t live a same
+                    year again and again and call it a life, don’t be a mediocre, just do something big and leave a legacy
+                    behind, believe me everyone becomes your friend when you are successful.</p>
+            </div>
           </div>
           <div class="col-md-6">
             <div class="right-aboutus photo2">
@@ -35,7 +55,17 @@
           </div>
       </div>
     </div>
-    {{ fun() }}
+  </section>
+
+  <section class="video">
+    <div class="" >
+      <div class="video">
+        <video controls (click)="toggleVideo()" #videoPlayer>
+          <source src="assets/images/other/damari.mp4" type="video/mp4" />
+          Browser not supported
+        </video>
+      </div>
+    </div>
   </section>
 
   <!-- <section class="panel services-section" id="services-section">

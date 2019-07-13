@@ -12,5 +12,6 @@ export const environment = {
     projectId: "eyecatchyarts-fbf0d",
     storageBucket: "eyecatchyarts-fbf0d.appspot.com",
     messagingSenderId: "817232824743"
-}
+},
+base_url: ' https://assignment-appstreet.herokuapp.com/api/v1',
 };

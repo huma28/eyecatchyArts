@@ -67,31 +67,42 @@ ul li {
 .animate {
   animation: fade-in 1.4s;
 }
-.hidden {
-    // opacity: 0;
+.opacityZero {
+    opacity: 0;
   }
-// .about-us {
-//     .right-aboutus {
-//         height: 350px;
-//         padding-left: 20%;
-//         background-image: url(./assets/images/other/back-color.jpg);
-//         // background-image: url(./assets/images/other/back-img.svg);
-//         .img {
-//             background-color: aquamarine;
-//             width: 80%;
-//             height: 100%;
-//         }
-//     }
-// }
+.video{
+    width: 100%;
+    video{
+        width: 100%;
+    }
+}
 
 
-// #gallery {
-//     scroll-snap-type: x mandatory;
-//     overflow-x: scroll;
-//     display: flex;
-//   }
-  
-//   #gallery img {
-//      scroll-snap-align: center;
-//   } 
-    
+// ----about us -----
+.mainAbout {
+    padding-bottom: 20px;
+}
+.name {
+    color: #eabc1c;
+    font-size: 24px;
+}
+.occupation {
+    color: grey;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+.aboutFounder {
+    padding-bottom: 5px;
+}
+
+
+// --------respomsive-------------
+@media (max-width: 767px) {
+  .mainAbout{
+    display: flex;
+    flex-direction: column;
+    .order {
+      order: 2;
+    }
+  }
+}

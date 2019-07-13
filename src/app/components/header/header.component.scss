@@ -18,6 +18,9 @@
     letter-spacing: 2px;
     font-weight: bold;
   }
+  .fa-shopping-cart {
+    color: #30ADA1;
+  }
 }
 .header-nav {
   // background-color:#e8e1d8;
@@ -31,6 +34,16 @@
 @media (max-width: 767px) {
   .top-header {
     justify-content: center;
+  }
+  .header-nav {
+    ul {
+      width: 100%;
+      li{
+        &:nth-last-child(2) {
+          border-bottom: 1px solid #FEC051;
+        }
+      }
+    }
   }
   .icon-left {
     float: left;

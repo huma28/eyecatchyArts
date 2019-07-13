@@ -1,18 +1,34 @@
-// import {Injectable} from '@angular/core';
-// import {AngularFireDatabase, } from 'angularfire2/database';
+import {Injectable} from '@angular/core';
+import {AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 // import * as firebase from 'firebase';
 
 
  
 // import {FileUpload} from './models/fileupload';
- 
 // @Injectable()
-// export class UploadFileService {
+ 
+@Injectable()
+export class FirebaseService {
+    list: AngularFireList<any>;
+    detail: AngularFireList<any>;
+    
+
  
 //   private basePath = '/uploads';
 //   fileUploads: FileUpload[];
  
-//   constructor(private db: AngularFireDatabase) {}
+  constructor(private firebase: AngularFireDatabase) {}
+
+  getBanner() {
+    this.list = this.firebase.list('paintingList');
+    return this.list;
+  }
+
+  paintingDetail() {
+    this.detail = this.firebase.list('paintingList/0');
+    console.log('huma---', this.detail);
+    return this.detail;
+  }
  
 //   pushFileToStorage(fileUpload: FileUpload, progress: {percentage: number}) {
 //     const storageRef = firebase.storage().ref();
@@ -64,4 +80,4 @@
 //     const storageRef = firebase.storage().ref()
 //     storageRef.child(`${this.basePath}/${name}`).delete()
 //   }
-// }
+}
