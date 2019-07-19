@@ -21,8 +21,8 @@ export class DetailComponent implements OnInit {
     detailData: any;
     selectedOptions = [];
     more: boolean = false;
-    count: number = 0;
-    paitingsList = {};
+    count: number = 1;
+    paitingDetail = {};
     // paitingsList: Observable<any>;
     constructor(
       private route: ActivatedRoute,
@@ -35,8 +35,6 @@ export class DetailComponent implements OnInit {
         console.log("param", params, params.id)
         this.getDetail(params.id);
       });
-
-   
     }
   
     imgSliderFun() {
@@ -81,16 +79,18 @@ export class DetailComponent implements OnInit {
     }
   
     getDetail(id) {
-     let x = this.firebaseService.paintingDetail();
+     let x = this.firebaseService.paintingDetail(id);
+     let obj = {};
       x.snapshotChanges().subscribe(item => {
+        console.log('detail page--------', item);
         for(let ele in item) {
           let i = item[ele].payload.toJSON();
           let key = item[ele].key;
-          this.paitingsList[key] = i;
+          this.paitingDetail[key] = i;
           // this.paitingsList.push({[key]: i});
-          console.log('finalllllll--', this.paitingsList);
+          console.log('finalllllll--', this.paitingDetail);
           // let images = this.paitingsList;
-          this.galleryImage( this.paitingsList) ;
+          this.galleryImage( this.paitingDetail) ;
         }
       })
       this.imgSliderFun();
@@ -100,7 +100,7 @@ export class DetailComponent implements OnInit {
     addToCart() {
       console.log('add to cart----');
       let item = {name: 'painting name'};
-      this.shoppingCartService.setSubjectForCart(item);
+      this.shoppingCartService.setSubjectForCart(this.paitingDetail);
       // let xyz ={name: "huma"};
       // this.shoppingCartService.setSubjectForHeader(xyz);
     }

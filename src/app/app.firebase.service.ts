@@ -13,7 +13,7 @@ export class FirebaseService {
     detail: AngularFireList<any>;
     
 
- 
+
 //   private basePath = '/uploads';
 //   fileUploads: FileUpload[];
  
@@ -24,8 +24,8 @@ export class FirebaseService {
     return this.list;
   }
 
-  paintingDetail() {
-    this.detail = this.firebase.list('paintingList/0');
+  paintingDetail(id) {
+    this.detail = this.firebase.list(`paintingList/${id}`);
     console.log('huma---', this.detail);
     return this.detail;
   }

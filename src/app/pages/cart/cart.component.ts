@@ -3,6 +3,7 @@ import { AppConfig } from '../../app.config';
 import { Router, ActivatedRoute } from '@angular/router'; 
 import { ShoppingCartService } from 'services/shoppingCart.service';
 import { Subscription } from 'rxjs/Subscription';
+import { ButtonComponent } from 'app/components/button/button.component';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -25,27 +26,20 @@ export class CartComponent implements OnInit {
 
      this.cartList = this.shoppingCartService.getSubjectForCart().subscribe(message => { 
         this.cartCount = message.value;
-        // this.list = message.list;
-        console.log('huma-----------------------', this.list); 
+        console.log('here cart', message);
+        this.list = message.list;
       });
-    //  console.log('in header-----', this.shoppingCartService.subjectValue );
-    //  this.shoppingCartService.subjectValue.subscribe((subjectValue: any) => {
-    //   console.log('hey subject working', subjectValue);
-    //   this.cartCount = subjectValue;
-    //   // this.lastSyncData = abc;
-    //   // this.userData = JSON.parse(localStorage.getItem("currentUser"));
-    // });
-  }
-  navLinkClicked() {
-    let collapse1 = document.getElementById('navbar-collapse-1');
-    let collapse2 = document.getElementById('navbar-collapse-2');
-    collapse1.classList.remove('in');
-    collapse2.classList.remove('in');
   }
 
   ngOnInit() {
     this.isCollapsed = true;
     this.list = this.shoppingCartService.getProductList();
+    console.log('cart list ---', this.list);
+  }
+  removeItem(index) {
+    console.log("delete item");
+    this.shoppingCartService.removeItem(index);
+
   }
 
 }

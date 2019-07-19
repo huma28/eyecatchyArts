@@ -3,7 +3,6 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 // import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Router } from '@angular/router';
-import { AwesomeShopService } from '../../../services/awesomeShope.service';
 import { FirebaseService } from '../../app.firebase.service';
 
 import { PictureConfig } from '../../pictureConfig';
@@ -39,7 +38,6 @@ export class GalleryComponent implements OnInit {
   constructor(private modalService: BsModalService,
               public db: AngularFireDatabase,
               private router: Router,
-              private awesomeShopService: AwesomeShopService,
               private firebaseService:FirebaseService) {
                   this.multiSlider = PictureConfig.multiSlider;
   }
@@ -68,7 +66,6 @@ export class GalleryComponent implements OnInit {
   ngOnInit() {
     // call function of get all list of painting request form here
     this.getPaintingRequestList();
-    this.getList(1);  //test
     this.getAllPaintings();
   }
   getAllPaintings() {
@@ -79,7 +76,6 @@ export class GalleryComponent implements OnInit {
         y["$key"] = element.key;
         this.paitingsList.push(y);
       })
-      // console.log('list here-----', this.paitingsList);
     })
   }
 
@@ -95,27 +91,15 @@ export class GalleryComponent implements OnInit {
     this.paintingForm.dateMsg = date.toString();
     this.paintingRequestList.push(
       this.paintingForm
-    ).then((data) =>{
+    ).then((data) => {
       // this.modalRef.hide();
       // this.openSuccessModal(templateModal);
-
     });
     this.formDataSaved = true;
   }
 
   clickOnItem(id) {
     this.router.navigate(['detail', id]);
-  }
-
-  // ----------testing API
-  getList(page) {
-    this.awesomeShopService.getList(page)
-      .subscribe((response) => {
-        // console.log('SUCCESSSS', response);
-        this.listingData = response.products;
-        this.page = page;
-      }, (error: Response) => {
-      });
   }
 
 }

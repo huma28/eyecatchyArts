@@ -22,7 +22,7 @@ export class AppComponent {
   autocompleteInput: string;
 
   data = [];
-  details: any;
+  // details: any;
   items: any;
   @Input() adressType: string;
   @ViewChild('addresstext') addresstext: any;
@@ -50,7 +50,6 @@ export class AppComponent {
     // setTimeout(() => { console.log('now expire') , 300000})
    
     var x = this.firebaseService.getBanner();
-    var detail = this.firebaseService.paintingDetail();
     x.snapshotChanges().subscribe(item => {
       item.forEach(element => {
         var y = element.payload.toJSON();

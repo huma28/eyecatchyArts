@@ -44,6 +44,8 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.isCollapsed = true;
+    let list = this.shoppingCartService.getProductList();
+    this.cartCount = list.length;
   }
 
 }

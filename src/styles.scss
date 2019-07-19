@@ -20,6 +20,11 @@
         background-color: #eabc42;
       }
   }
+  h4 {
+    font-size: 25px;
+    font-weight: bold;
+    text-transform: capitalize;
+  }
   p {
       font-size: 25px;
   }
@@ -284,15 +289,16 @@
       background: transparent;
   }
   .footer .social-icons {
-      text-align: center;
+    //   text-align: center;
   }
   .social-icons a {
-      display: inline-block;
-      margin: 0 15px 15px;
-      width: 41px;
-      height: 41px;
+      text-decoration: none;
+    //   display: inline-block;
+    //   margin: 0 15px 15px;
+    //   width: 41px;
+    //   height: 41px;
     //   background: url(../assets/images/social-icons_sprite.png) no-repeat -2px -2px;
-      vertical-align: middle;
+    //   vertical-align: middle;
       cursor: pointer;
   }
   .social-icons a.fb-icon {
