@@ -1,0 +1,13 @@
+.paymentForm {
+    width: 50%;
+    padding: 30px;
+    .ButtonDiv {
+        width: 100%;
+    }
+}
+
+@media (max-width: 767px) {
+    .paymentForm {
+        width: 100%;
+    }
+}

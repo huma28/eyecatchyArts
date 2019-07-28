@@ -17,40 +17,29 @@ export class FooterComponent implements OnInit {
     name: '',
     email: '',
     phone: '',
-    address: '',
     message: '',
-    paintingName: '',
     dateMsg: '',
   }
-  paintingRequestList: AngularFireList<any>;
+  contactRequestList: AngularFireList<any>;
 
   ngOnInit() {
-    this.getPaintingRequestList();
+    this.getContactRequestList();
   }
   
-  getPaintingRequestList() {
-    this.paintingRequestList = this.db.list('paintingRequestList');
-    // console.log('painting list---------', this.paintingRequestList);
-    return this.paintingRequestList;
+  getContactRequestList() {
+    this.contactRequestList = this.db.list('contactUsList');
+    return this.contactRequestList;
   }
   goTo(url) {
     window.open(url);
-    // this.document.location.href = url;
   }
   onSubmit() {
-    // this.paintingForm.paintingName = this.paintingData.name;
     const date = new Date();
     this.paintingForm.dateMsg = date.toString();
-
-    console.log('submit---', this.paintingForm );
-    this.paintingRequestList.push(
+    this.contactRequestList.push(
       this.paintingForm
     ).then((data) =>{
       console.log('successfull');
-      // this.modalRef.hide();
-      // this.openSuccessModal(templateModal);
-
     });
-    // this.formDataSaved = true;
   }
 }

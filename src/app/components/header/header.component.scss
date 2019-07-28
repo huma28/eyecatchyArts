@@ -18,8 +18,13 @@
     letter-spacing: 2px;
     font-weight: bold;
   }
-  .fa-shopping-cart {
-    color: #30ADA1;
+}
+.fa-shopping-cart {
+  color: #30ADA1;
+}
+.header-mobile {
+  .icon-cart {
+    display: none;
   }
 }
 .header-nav {
@@ -28,6 +33,18 @@
   .navbar-nav {
     float: none;
     display: inline-block;
+  }
+}
+.cartCount {
+  position: relative;
+  span {
+    position: absolute;
+    background-color: greenyellow;
+    border-radius: 50%;
+    min-width: 20px;
+    min-height: 12px;
+    text-align: center;
+    top: 3px;
   }
 }
 
@@ -65,6 +82,10 @@
     .icon-dot {
       padding: 0;
       font-size: 20px;
+    }
+    .icon-cart{
+      display: table;
+      float: right;
     }
     .webName {
       display: table;

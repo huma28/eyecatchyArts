@@ -1,4 +1,6 @@
 .cartList {
+  display: flex;
+  align-items: center;
   .imgWrapper {
     .img {
         min-height: 100px;
@@ -12,7 +14,7 @@
   }
 }
 .cart-btn{
-  padding: 30px auto;
+  padding-bottom: 20px;
   button{
     background: #30ADA1;
     color: #fff;

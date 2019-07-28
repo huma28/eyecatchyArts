@@ -65,6 +65,9 @@
         border: 1px solid #fff;
     }
 }
+.textShadow {
+    text-shadow: 2px 2px #000;
+}
 @media (max-width: 767px) { 
     .gallery {
         .scroll{

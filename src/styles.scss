@@ -7,7 +7,7 @@
       font-family: 'HelveticaNeueLTStd-Roman';
   }
   h1 {
-      font-size: 45px;
+      font-size: 40px;
       font-weight: bold;
       position: relative;
       &::after {
@@ -27,6 +27,19 @@
   }
   p {
       font-size: 25px;
+  }
+  .form-control {
+      border-radius: 0;
+  }
+  .commonButton {
+      background-color: #49aaa0;
+      border: none;
+      color: #fff;
+      &:hover, &:active, &:focus {
+        background-color: #49aaa0!important;
+        color: #fff;
+        border: none;
+      }
   }
   .container {
       max-width: 1440px;
@@ -102,6 +115,7 @@
       background-repeat: no-repeat;
       background-size: cover;
       background-attachment: fixed;
+      background-position: center;
       position: relative;
   }
   .top-banner .container {
@@ -318,13 +332,13 @@
   }
   
   .footer-bottom {
-      background-color: #363636;
-      font-size: 13px;
+      background-color: #000000;
       text-align: center;
       color: #ffffff;
       padding: 11px 0;
   }
   .footer-bottom p {
+      font-size: 15px;
       margin: 0;
   }
   
@@ -762,15 +776,21 @@
           margin: 0 15px;
           display: inline-block;
       }
-      .top-banner, .top-banner .container {
-          height: 550px;
+      .top-banner {
+        background-attachment: inherit;
+        background-size: contain;
+        height: 260px;
+      }
+      .top-banner .container {
+          height: 100%;
       }
       .top-banner-text {
           width: 90%;
-          min-height: 220px;
+          min-height: 160px;
           height: auto;
           right: 15px;
-          bottom: 82px;
+          bottom: 10px;
+          padding: 10px 20px 20px;
       }
       .top-banner-text:after {
           top: -15px;
@@ -821,7 +841,7 @@
            bottom: 20px;
       }
       .panel{
-          padding-top: 72px!important;
+        //   padding-top: 72px!important;
       }
   }
   
@@ -914,6 +934,15 @@
     p {
         font-size: 18px;
     }
+    .about-us {
+        .right-aboutus {
+            .img { 
+                right: 10%;
+                top: 10%;
+                height: 60%;
+            }
+        }
+    }
 }
 
 ////////////////////////   detail page of gallary
@@ -934,6 +963,6 @@ ngx-gallery-thumbnails {
 
 @media (max-width: 767px) { 
     ngx-gallery-image {
-        height: 50%!important;
+        height: 75%!important;
     }
 }

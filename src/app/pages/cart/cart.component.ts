@@ -14,7 +14,7 @@ export class CartComponent implements OnInit {
   public isCollapsed: boolean;
   cartCount = 0;
   cartList: Subscription;
-  list:any;
+  list = [];
   button={
     buttonText:"Book Now",
     borderColor: "#e8e1d8",

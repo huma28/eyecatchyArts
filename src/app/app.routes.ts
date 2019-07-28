@@ -7,6 +7,7 @@ import { SpecificationComponent } from './pages/specification/specification.comp
 import { ContectUsComponent } from './pages/contect-us/contect-us.component';
 import { DetailComponent } from './pages/detail/detail.component';
 import { CartComponent } from './pages/cart/cart.component';
+import { PaymentComponent } from './pages/payment/payment.component';
 // Define which component should be loaded based on the current URL
 export const routes: Routes = [
     {
@@ -43,6 +44,10 @@ export const routes: Routes = [
         path: 'cart',
         component: CartComponent,
         // canActivate: [AuthGuard]
+    },
+    {
+        path: 'payment',
+        component: PaymentComponent,
     },
     {   path: '', 
         redirectTo: '/home', 

@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ModalModule } from 'ngx-bootstrap';
@@ -17,6 +18,7 @@ import { DetailComponent } from './pages/detail/detail.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { SpecificationComponent } from './pages/specification/specification.component';
 import { BannerComponent } from './components/banner/banner.component';
+import { PaymentComponent } from './pages/payment/payment.component';
 import { routes } from './app.routes';
 import { environment } from '../environments/environment';
 import { ButtonComponent } from 'app/components/button/button.component';
@@ -30,6 +32,8 @@ import { FirebaseService } from './app.firebase.service';
 import { AuthService } from '../services/auth.service';
 import { ShoppingCartService } from 'services/shoppingCart.service';
 
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,8 +48,10 @@ import { ShoppingCartService } from 'services/shoppingCart.service';
     ButtonComponent,
     DetailComponent,
     CartComponent,
+    PaymentComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     ModalModule.forRoot(),
     RouterModule.forRoot(routes, {
@@ -56,7 +62,9 @@ import { ShoppingCartService } from 'services/shoppingCart.service';
     HttpModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    // BrowserAnimationsModule, // required animations module
+    // ToastrModule.forRoot() // ToastrModule added
   ],
   providers: [
             AwesomeShopService,

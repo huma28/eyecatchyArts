@@ -1,25 +1,26 @@
 <div class="detail-main">
   <div class="container">
     <div class="row">
-      <ul class="list-group col-sm-12">
+      <ul class="list-group col-xs-12">
         <li *ngFor="let item of list; let i = index" class="list-group-item cartList row">
-          <div class="col-sm-3 imgWrapper">
+          <div class="col-xs-3 imgWrapper">
             <div class="img" [style.backgroundImage]="'url(' + item.path+ ')'"></div>
           </div>
-          <div class="col-sm-6 descriptionWrapper">
+          <div class="col-xs-6 descriptionWrapper">
             <h3>{{item.name}}</h3>
             <div>{{item.size}}</div>
             <div>{{item.prize}}</div>
           </div>
-          <div class="col-sm-3 buttonsDiv">
+          <div class="col-xs-3 buttonsDiv">
             <app-button (click)="removeItem(i)" text="Remove" textColor="#eabc42" border="grey"></app-button>
           </div>
         </li>
       </ul>
-      <div class="cart-btn" *ngIf="list.length > 0">
-        <button type="button" class="btn btn-lg btn-block" (click)="addToCart()">Proceed to pay</button>
+      <div class="cart-btn col-xs-12" *ngIf="list && list.length > 0">
+        <button type="button" class="btn btn-lg btn-block" routerLink="/payment">Proceed to pay</button>
       </div>
-      <div class="col-sm-12 noItems" *ngIf="list.length <= 0">
+      <!-- {{list.length}} -->
+      <div class="col-xs-12 noItems" *ngIf="(list == null) || (list && list.length == 0)">
         No items
       </div>
     </div>

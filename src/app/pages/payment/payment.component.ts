@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ShoppingCartService } from 'services/shoppingCart.service';
 import { Subscription } from 'rxjs/Subscription';
 import { ButtonComponent } from 'app/components/button/button.component';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
@@ -21,7 +22,7 @@ export class PaymentComponent implements OnInit {
   //   textColor: "#FEC051",
   // }
 
-  constructor(public router: Router,  public shoppingCartService: ShoppingCartService) { 
+  constructor(public router: Router,  public shoppingCartService: ShoppingCartService, public db: AngularFireDatabase) { 
     //  this.headers = AppConfig.MENUS;
 
     //  this.cartList = this.shoppingCartService.getSubjectForCart().subscribe(message => { 
@@ -30,10 +31,49 @@ export class PaymentComponent implements OnInit {
     //   });
   }
 
+  paintingForm = {
+    name: '',
+    email: '',
+    phone: '',
+    pincode: '',
+    houseNo: '',
+    colony: '',
+    landMark: '',
+    city: '',
+    state: '',
+    address: '',
+    paintingName: '',
+    dateMsg: '',
+  }
+  paintingRequestList: AngularFireList<any>;
+
   ngOnInit() {
     // this.isCollapsed = true;
-    this.list = this.shoppingCartService.getProductList();
-    console.log('cart list ---', this.list);
-  }
+    // this.list = this.shoppingCartService.getProductList();
+    // console.log('cart list ---', this.list);
 
+    this.getPaintingRequestList();
+  }
+  getPaintingRequestList() {
+    this.paintingRequestList = this.db.list('paintingRequestList');
+    // console.log('painting list---------', this.paintingRequestList);
+    return this.paintingRequestList;
+  }
+  onSubmit() {
+    // this.paintingForm.paintingName = this.paintingData.name;
+    const date = new Date();
+    this.paintingForm.dateMsg = date.toString();
+
+    console.log('submit---', this.paintingForm );
+    this.paintingRequestList.push(
+      this.paintingForm
+    ).then((data) =>{
+      console.log('successfull');
+      this.router.navigate(['gallery']);
+      this.shoppingCartService.removeAllItem();
+      // this.modalRef.hide();
+      // this.openSuccessModal(templateModal);
+    });
+    // this.formDataSaved = true;
+  }
 }

@@ -10,8 +10,8 @@
         <div class="name">
           EyecatchyArt
         </div>
-        <div class="book">
-          {{cartCount}}
+        <div class="book cartCount">
+          <span *ngIf="cartCount > 0">{{cartCount}} </span>
           <!-- <app-button [text]="button.buttonText" [border]="button.borderColor" [textColor]="button.textColor"></app-button> -->
           <a routerLink="/cart"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i></a>
         </div>
@@ -27,9 +27,14 @@
         <div class="webName visible-xs">
           EyecatchyArt
         </div>
-        <button type="button" class="navbar-toggle collapsed icon-dot" data-toggle="collapse" data-target="#navbar-collapse-2" aria-expanded="false">
+        <div class="icon-cart cartCount">
+          <span *ngIf="cartCount > 0">{{cartCount}} </span>
+          <!-- <app-button [text]="button.buttonText" [border]="button.borderColor" [textColor]="button.textColor"></app-button> -->
+          <a routerLink="/cart"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i></a>
+        </div>
+        <!-- <button type="button" class="navbar-toggle collapsed icon-dot" data-toggle="collapse" data-target="#navbar-collapse-2" aria-expanded="false">
           <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-        </button>
+        </button> -->
       </div>
       <div class="collapse navbar-collapse header-nav" id="navbar-collapse-1">
           <ul class="nav navbar-nav">

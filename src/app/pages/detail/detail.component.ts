@@ -64,10 +64,10 @@ export class DetailComponent implements OnInit {
       this.galleryImages = [];
     }
   
-    galleryImage(images) {
+    galleryImage(detail) {
       let galleryImgArray = [];
-  
-      _.forEach(images.images, (data) => {
+      let images = detail.images || ['assets/images/painting/image1.jpg', 'assets/images/painting/image1.jpg']
+      _.forEach(images, (data) => {
         galleryImgArray.push({
           small: data,
           medium: data,

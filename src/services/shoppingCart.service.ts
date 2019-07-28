@@ -10,12 +10,12 @@ export class ShoppingCartService {
 
   public subjectValue = new Subject<any>();
   addCart=0;
-  productList=JSON.parse(localStorage.getItem('addedCart'));
+  productList=JSON.parse(localStorage.getItem('addedCart')) || [] ;
   addedList: any;
    //set Subject For cart
   setSubjectForCart(item){
     this.addCart++;
-    this.productList = JSON.parse(localStorage.getItem('addedCart'));
+    this.productList = JSON.parse(localStorage.getItem('addedCart')) || [];
     this.productList.push(item);
     console.log('set subject', this.addCart);
     localStorage.setItem('addedCart', JSON.stringify(this.productList));
@@ -36,6 +36,12 @@ export class ShoppingCartService {
     this.productList.splice(index, 1);
     this.addCart--;
     localStorage.setItem('addedCart', JSON.stringify(this.productList));
+    this.subjectValue.next({value: this.productList.length, list:this.productList});
+  }
+
+  removeAllItem() {
+    localStorage.removeItem('addedCart');
+    this.productList = [];
     this.subjectValue.next({value: this.productList.length, list:this.productList});
   }
 

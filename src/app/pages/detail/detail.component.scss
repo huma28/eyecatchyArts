@@ -1,5 +1,5 @@
 .detail-main {
-    padding-top: 50px;
+    padding: 15px 0;
 }
 .right-div-detail{
     padding-left: 40px;
@@ -111,6 +111,9 @@
       height: 400px!important;
     }
     .slider-div{
+      ngx-gallery {
+        height: 400px!important;
+      }
       padding-bottom: 15px;
       border-bottom: 1px solid #D3D3D3;
       margin-bottom: 15px;

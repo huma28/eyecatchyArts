@@ -6,7 +6,7 @@
       </a>
     </div>
     <div class="row footerDiv">
-      <div class="col-md-3">
+      <div class="col-md-3 contactInfoDiv">
         <h3>Contact Info</h3>
 
         <div class="social-icons">
@@ -26,21 +26,21 @@
         </div>
       </div>
       <div class="col-md-4">
-        <h3>Latest Blog Posts</h3>
+        <h3>Latest Posts</h3>
         <div class="blog">
           <div class="col-md-4 image"> <div style="background-image: url(./assets/images/painting/best16.jpg)"></div> </div>
-          <div class="col-md-8 description"> description </div>
+          <div class="col-md-8 description"> A beautiful pink tree is source of happiness. </div>
         </div>
         <div class="blog">
           <div class="col-md-4 image"> <div style="background-image: url(./assets/images/painting/best21.jpg)"></div> </div>
-          <div class="col-md-8 description"> description </div>
+          <div class="col-md-8 description"> A view which gives a positive vibes can change your day. </div>
         </div>
         <div class="blog">
           <div class="col-md-4 image"> <div style="background-image: url(./assets/images/painting/ganesh.jpg)"></div> </div>
-          <div class="col-md-8 description"> description </div>
+          <div class="col-md-8 description"> Hey, start your day with ganesha. </div>
         </div>
       </div>
-      <div class="col-md-5">
+      <div class="col-md-5 getInTouch">
         <h3>Get in Touch</h3>
         <div>
           <form class="formContact" #buyForm="ngForm" (ngSubmit)="onSubmit()">
@@ -66,19 +66,13 @@
               </span>
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" name="address" #address="ngModel" [(ngModel)]="paintingForm.address" placeholder="Enter address" required>
-              <span class="help-block" *ngIf="address.errors?.required && address.touched">
-                Address is required
-              </span>
-            </div>
-            <div class="form-group">
-              <textarea name="message" rows="10" cols="30" class="form-control" #message="ngModel" [(ngModel)]="paintingForm.message" placeholder="Enter message" required>The cat was playing in the garden.</textarea>
+              <textarea name="message" rows="5" cols="30" class="form-control" #message="ngModel" [(ngModel)]="paintingForm.message" placeholder="Enter message" required>The cat was playing in the garden.</textarea>
               <!-- <input type="text-area" class="form-control" name="message" #message="ngModel" [(ngModel)]="paintingForm.message" placeholder="Enter message" required> -->
               <span class="help-block" *ngIf="message.errors?.required && message.touched">
                 Message is required
               </span>
             </div>
-            <button type="submit" class="btn btn-default" [disabled]="buyForm.invalid">Submit</button>
+            <button type="submit" class="btn btn-default commonButton" [disabled]="buyForm.invalid">Submit</button>
           </form>
         </div>
       </div>

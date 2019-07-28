@@ -18,6 +18,10 @@ export class AppConfig {
             navigateTo: 'specification'
         },
         {
+            name: 'Contect Us',
+            navigateTo: 'contactUs'
+        },
+        {
             name: 'Our Work',
             navigateTo: 'aboutUs'
         }
