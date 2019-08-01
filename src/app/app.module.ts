@@ -22,6 +22,7 @@ import { PaymentComponent } from './pages/payment/payment.component';
 import { routes } from './app.routes';
 import { environment } from '../environments/environment';
 import { ButtonComponent } from 'app/components/button/button.component';
+import { SvgTextComponent } from 'app/components/svgText/SvgText.component';
 // import * as firebase from 'firebase';
 
 import { AwesomeShopService } from '../services/awesomeShope.service';
@@ -49,6 +50,7 @@ import { ShoppingCartService } from 'services/shoppingCart.service';
     DetailComponent,
     CartComponent,
     PaymentComponent,
+    SvgTextComponent,
   ],
   imports: [
     CommonModule,

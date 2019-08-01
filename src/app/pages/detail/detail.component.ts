@@ -22,7 +22,11 @@ export class DetailComponent implements OnInit {
     selectedOptions = [];
     more: boolean = false;
     count: number = 1;
-    paitingDetail = {};
+    paitingDetail = { name : '',
+                      description: '',
+                      prize: '',
+                      size: '',
+                      };
     // paitingsList: Observable<any>;
     constructor(
       private route: ActivatedRoute,

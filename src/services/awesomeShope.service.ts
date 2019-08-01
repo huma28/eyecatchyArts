@@ -18,4 +18,8 @@ export class AwesomeShopService {
         return this.http.get(`/products/${id}`)
         .map(res => res.json());
     }
+    sendMail() {
+        return this.http.get(`/email`)
+        .map(res => res.json());
+    }
 }
