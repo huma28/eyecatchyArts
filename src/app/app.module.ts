@@ -32,6 +32,7 @@ import { HttpModule } from '@angular/http';
 import { FirebaseService } from './app.firebase.service';
 import { AuthService } from '../services/auth.service';
 import { ShoppingCartService } from 'services/shoppingCart.service';
+import { FormSubmitService } from 'services/formSubmit.service';
 
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { ToastrModule } from 'ngx-toastr';
@@ -74,6 +75,7 @@ import { ShoppingCartService } from 'services/shoppingCart.service';
             FirebaseService,
             AuthService,
             ShoppingCartService,
+            FormSubmitService,
             ],
   bootstrap: [AppComponent]
 })

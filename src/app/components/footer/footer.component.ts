@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/platform-browser';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { AppConfig } from '../../app.config';
+import { FormSubmitService } from 'services/formSubmit.service';
 
 @Component({
   selector: 'app-footer',
@@ -10,7 +11,7 @@ import { AppConfig } from '../../app.config';
 })
 export class FooterComponent implements OnInit {
   footer: any = AppConfig.MENUS;
-  constructor( @Inject(DOCUMENT) private document: any,  public db: AngularFireDatabase,) { 
+  constructor( @Inject(DOCUMENT) private document: any,  public db: AngularFireDatabase, public formSubmitService: FormSubmitService) { 
   }
   paintingData: any;
   paintingForm = {
@@ -40,6 +41,9 @@ export class FooterComponent implements OnInit {
       this.paintingForm
     ).then((data) =>{
       console.log('successfull');
+     let  email = this.formSubmitService.sendMail();
+     console.log('mail Send----, email', email);
+     email.subscribe((data) => console.log('response-------email', data));
     });
   }
 }

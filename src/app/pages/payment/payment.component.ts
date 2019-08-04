@@ -5,6 +5,7 @@ import { ShoppingCartService } from 'services/shoppingCart.service';
 import { Subscription } from 'rxjs/Subscription';
 import { ButtonComponent } from 'app/components/button/button.component';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { FormSubmitService } from 'services/formSubmit.service';
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
@@ -22,7 +23,7 @@ export class PaymentComponent implements OnInit {
   //   textColor: "#FEC051",
   // }
 
-  constructor(public router: Router,  public shoppingCartService: ShoppingCartService, public db: AngularFireDatabase) { 
+  constructor(public router: Router,  public shoppingCartService: ShoppingCartService, public db: AngularFireDatabase, public formSubmitService: FormSubmitService) { 
     //  this.headers = AppConfig.MENUS;
 
     //  this.cartList = this.shoppingCartService.getSubjectForCart().subscribe(message => { 
@@ -71,6 +72,8 @@ export class PaymentComponent implements OnInit {
       console.log('successfull');
       this.router.navigate(['gallery']);
       this.shoppingCartService.removeAllItem();
+      let  email = this.formSubmitService.sendMail();
+     console.log('mail Send----, email', email);
       // this.modalRef.hide();
       // this.openSuccessModal(templateModal);
     });
