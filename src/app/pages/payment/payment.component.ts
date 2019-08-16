@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { ButtonComponent } from 'app/components/button/button.component';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { FormSubmitService } from 'services/formSubmit.service';
+import { ToasterService } from 'services/toaster.service';
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
@@ -23,7 +24,7 @@ export class PaymentComponent implements OnInit {
   //   textColor: "#FEC051",
   // }
 
-  constructor(public router: Router,  public shoppingCartService: ShoppingCartService, public db: AngularFireDatabase, public formSubmitService: FormSubmitService) { 
+  constructor(public router: Router,  public shoppingCartService: ShoppingCartService, public db: AngularFireDatabase, public formSubmitService: FormSubmitService, private toasterService: ToasterService) { 
     //  this.headers = AppConfig.MENUS;
 
     //  this.cartList = this.shoppingCartService.getSubjectForCart().subscribe(message => { 
@@ -70,12 +71,25 @@ export class PaymentComponent implements OnInit {
       this.paintingForm
     ).then((data) =>{
       console.log('successfull');
-      this.router.navigate(['gallery']);
-      this.shoppingCartService.removeAllItem();
-      let  email = this.formSubmitService.sendMail();
-     console.log('mail Send----, email', email);
-      // this.modalRef.hide();
-      // this.openSuccessModal(templateModal);
+     let body = {
+        customerEmail: this.paintingForm.email,
+        name: this.paintingForm.name,
+        paintingName: this.paintingForm.paintingName,
+        subject: "your painting request to eyecatchyArts",
+        text: 'We received your request and will contact you soon.'
+     }
+      let  email = this.formSubmitService.sendMail(body);
+     console.log('mail Send---- on payment email', email);
+     email.subscribe((data) => {
+        console.log('response-------email', data);
+        this.toasterService.showSuccess('Yourorder confirm and sent an email');
+        this.router.navigate(['gallery']);
+        this.shoppingCartService.removeAllItem();
+      },
+      (error) => {
+        this.toasterService.showError('Something went wrong');
+      }
+    );
     });
     // this.formDataSaved = true;
   }

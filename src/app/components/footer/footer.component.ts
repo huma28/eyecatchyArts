@@ -3,7 +3,7 @@ import { DOCUMENT } from '@angular/platform-browser';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { AppConfig } from '../../app.config';
 import { FormSubmitService } from 'services/formSubmit.service';
-
+import { ToasterService } from 'services/toaster.service';
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
@@ -11,7 +11,7 @@ import { FormSubmitService } from 'services/formSubmit.service';
 })
 export class FooterComponent implements OnInit {
   footer: any = AppConfig.MENUS;
-  constructor( @Inject(DOCUMENT) private document: any,  public db: AngularFireDatabase, public formSubmitService: FormSubmitService) { 
+  constructor( @Inject(DOCUMENT) private document: any,  public db: AngularFireDatabase, public formSubmitService: FormSubmitService, private toasterService: ToasterService) { 
   }
   paintingData: any;
   paintingForm = {
@@ -41,9 +41,23 @@ export class FooterComponent implements OnInit {
       this.paintingForm
     ).then((data) =>{
       console.log('successfull');
-     let  email = this.formSubmitService.sendMail();
-     console.log('mail Send----, email', email);
-     email.subscribe((data) => console.log('response-------email', data));
+      let body = {
+        name: this.paintingForm.name,
+        email: this.paintingForm.email,
+        subject: "Your contect request to eyecatchyArts",
+        text: 'We received your request and will contact you soon.'
+      }
+     let  email = this.formSubmitService.sendMail(body);
+     console.log('mail Send----, email');
+     
+     email.subscribe((data) => {
+        console.log('response-------email', data);
+        this.toasterService.showSuccess('Your request successfully submitted');},
+     (error) => {
+      console.log('error-------email', error);
+      this.toasterService.showError('Something went wrong');
+     }
+    );
     });
   }
 }

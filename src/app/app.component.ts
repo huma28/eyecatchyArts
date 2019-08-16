@@ -1,4 +1,4 @@
-import { Component, ViewChild, EventEmitter, Output, OnInit, AfterViewInit, Input } from '@angular/core';
+import { Component, ViewContainerRef, ViewChild, Input } from '@angular/core';
 import * as _ from 'lodash';
 import * as firebase from 'firebase';
 import { Router, NavigationEnd } from '@angular/router';
@@ -7,6 +7,7 @@ import {FirebaseService} from './app.firebase.service';
 import { element } from '../../node_modules/protractor';
 import { AuthService } from '../services/auth.service';
 import * as jwt from 'jsonwebtoken';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 interface photos {
   url?: string;
@@ -28,17 +29,21 @@ export class AppComponent {
   @ViewChild('addresstext') addresstext: any;
   constructor(private router: Router,
     private firebaseService:FirebaseService,
-    private authService: AuthService) {
+    private authService: AuthService,
+    public toastr: ToastsManager,
+    vcr: ViewContainerRef,) {
     //   const jwtBearerToken = jwt.sign({}, RSA_PRIVATE_KEY, {
     //     algorithm: 'RS256',
     //     expiresIn: 120,
     // });
-      this.authService.setToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6ImV5ZWNhdGNoeSIsImlhdCI6MTUxNjIzOTAyMiwiZXhwIjoxMDAwfQ.1rBRMaHGtyhwR4rwlv2mA4vhqZimepu8r8LsdgrS4Fw');
+    this.toastr.setRootViewContainerRef(vcr);
+    this.authService.setToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6ImV5ZWNhdGNoeSIsImlhdCI6MTUxNjIzOTAyMiwiZXhwIjoxMDAwfQ.1rBRMaHGtyhwR4rwlv2mA4vhqZimepu8r8LsdgrS4Fw');
       
   }
 
   ngOnInit() {
     console.log('token--------', this.authService.isTokenExpired());
+  
     // setTimeout(() => {
     //   if (!this.authService.isTokenExpired()) {
     //   console.log('not expire');

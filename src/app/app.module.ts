@@ -20,7 +20,7 @@ import { SpecificationComponent } from './pages/specification/specification.comp
 import { BannerComponent } from './components/banner/banner.component';
 import { PaymentComponent } from './pages/payment/payment.component';
 import { routes } from './app.routes';
-import { environment } from '../environments/environment';
+import { environment } from '../.environments/environment';
 import { ButtonComponent } from 'app/components/button/button.component';
 import { SvgTextComponent } from 'app/components/svgText/SvgText.component';
 // import * as firebase from 'firebase';
@@ -33,6 +33,9 @@ import { FirebaseService } from './app.firebase.service';
 import { AuthService } from '../services/auth.service';
 import { ShoppingCartService } from 'services/shoppingCart.service';
 import { FormSubmitService } from 'services/formSubmit.service';
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
+import { ToasterService } from '../services/toaster.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { ToastrModule } from 'ngx-toastr';
@@ -56,6 +59,7 @@ import { FormSubmitService } from 'services/formSubmit.service';
   imports: [
     CommonModule,
     BrowserModule,
+    BrowserAnimationsModule,
     ModalModule.forRoot(),
     RouterModule.forRoot(routes, {
       useHash: true
@@ -66,6 +70,7 @@ import { FormSubmitService } from 'services/formSubmit.service';
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
+    ToastModule.forRoot(),
     // BrowserAnimationsModule, // required animations module
     // ToastrModule.forRoot() // ToastrModule added
   ],
@@ -76,6 +81,7 @@ import { FormSubmitService } from 'services/formSubmit.service';
             AuthService,
             ShoppingCartService,
             FormSubmitService,
+            ToasterService,
             ],
   bootstrap: [AppComponent]
 })

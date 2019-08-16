@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
-import { environment } from '../environments/environment';
+import { environment } from '../.environments/environment';
 import { Headers } from '@angular/http';
 import { UrlHandlingStrategy } from '@angular/router/src/url_handling_strategy';
 

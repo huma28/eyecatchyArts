@@ -9,5 +9,6 @@ export const environment = {
     messagingSenderId: "817232824743"
 },
 // base_url: ' https://assignment-appstreet.herokuapp.com/api/v1',
-base_url: 'https://eyecatchyapi.herokuapp.com/',
+// base_url: 'https://eyecatchyapi.herokuapp.com/',
+base_url: 'http://localhost:9000/',
 };
