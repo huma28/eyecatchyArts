@@ -1,3 +1,6 @@
+.col-md-4 {
+  position: inherit;  // temporary solution--- to make add to cart animation for full page
+}
 .detail-main {
     padding: 15px 0;
 }
@@ -10,12 +13,12 @@
       padding-bottom: 20px;
       .more{
         font-size: 16px;
-        color: #30ADA1;
+        color: #ef8f2c;
         font-weight: bold;
         cursor: pointer;
       }
       .sub-heading{
-        color: #30ADA1;
+        color: #ef8f2c;
         font-weight: bold;
       }
       p, .delete-text{
@@ -75,7 +78,7 @@
     }
   }
   .quantity{
-    border: 1px solid #30ADA1;
+    border: 1px solid #ef8f2c;
     border-radius: 5px;
     button{
       min-width: 40px;
@@ -83,22 +86,39 @@
     }
     button:nth-child(odd) {
       background: transparent;
-      color: #30ADA1
+      color: #ef8f2c
     }
     button:nth-child(even) {
-      background: #30ADA1;
+      background: #ef8f2c;
       color: #fff;
     }
   }
   .cart-btn{
     padding-top: 30px;
     button{
-      background: #30ADA1;
+      background: #ef8f2c;
       color: #fff;
     }
   }
   .active{
     background-color: #D9D9D9;
+  }
+  .addToCartAnimation {
+    width: 25px;
+    height: 25px;
+    background-color: #ef8f2c;
+    position: absolute;
+    z-index: 999;
+    border-radius: 50%;
+    opacity: 0;
+    -webkit-animation: addToCart 2s; /* Safari 4.0 - 8.0 */
+    animation: addToCart 2s;
+  }
+
+  @keyframes addToCart {
+    0%  {left: 90%; top: 80%;opacity: 1}
+    
+  100% {left: 95%; top: 5%; opacity: 0}
   }
   
   //-------- responsive css start ----------

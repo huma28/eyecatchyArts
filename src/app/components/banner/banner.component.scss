@@ -29,9 +29,9 @@
                 background-position: bottom;
                 background-repeat: no-repeat;
                 transition: all 0.7s ease;
-                h2 {
+                span {
                     color: #fff;
-                    font-size: 40px;
+                    font-size: 30px;
                 }
                 p {
                     color: #fff;
@@ -62,7 +62,7 @@
         left: 0;
         right: 0;
         margin: 8px;
-        border: 1px solid #fff;
+        border: 1px solid #afaaaa;
     }
 }
 .textShadow {
@@ -71,7 +71,7 @@
 @media (max-width: 767px) { 
     .gallery {
         .scroll{
-            height: 300px;
+            height: 250px;
             .card {
                 min-width: 63%;
                 .inner-div {

@@ -4,6 +4,8 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { AppConfig } from '../../app.config';
 import { FormSubmitService } from 'services/formSubmit.service';
 import { ToasterService } from 'services/toaster.service';
+import 'rxjs/add/operator/toPromise';
+import {Headers, Http, RequestOptions} from "@angular/http";
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
@@ -11,7 +13,7 @@ import { ToasterService } from 'services/toaster.service';
 })
 export class FooterComponent implements OnInit {
   footer: any = AppConfig.MENUS;
-  constructor( @Inject(DOCUMENT) private document: any,  public db: AngularFireDatabase, public formSubmitService: FormSubmitService, private toasterService: ToasterService) { 
+  constructor( @Inject(DOCUMENT) private document: any,  public db: AngularFireDatabase, public formSubmitService: FormSubmitService, private toasterService: ToasterService, private http: Http) { 
   }
   paintingData: any;
   paintingForm = {

@@ -23,22 +23,9 @@
               <div class="bottom-section">
                 <div class="colors-div">
                   <div class="sub-heading">Size</div>
-                  <!-- <ul>
-                    <li *ngFor="let color of detailData.colors" class="color">
-                      <div (click)="changeColor(color._id)" [ngClass]='{active: detailData.showData.sign[1] == color._id}' class="">
-                        <span class="color-circle" [ngStyle]="{'background-color':color.name}"></span>
-                        <span>{{color.name}}</span>
-                      </div>
-                    </li>
-                  </ul> -->
                 </div>
                 <div class="size-div">
                   <div class="sub-heading">{{paitingDetail.size}}</div>
-                  <!-- <ul>
-                    <li *ngFor="let size of detailData.sizes" class="size">
-                      <div (click)="changeSize(size._id)" [ngClass]='{active: detailData.showData.sign[0] == size._id}'>{{size.name}}</div>
-                    </li>
-                  </ul> -->
                 </div>
                 <div class="">
                   <div class="sub-heading">Quatity</div>
@@ -49,7 +36,11 @@
                   </div>
                 </div>
                 <div class="cart-btn">
-                  <button type="button" class="btn btn-lg btn-block" (click)="addToCart()">Add to cart</button>
+                  <button type="button" class="btn btn-lg btn-block" (click)="addToCart()" [disabled]="alreadyAddedInCart">
+                    <span *ngIf="alreadyAddedInCart">Added - go to cart</span>
+                    <span *ngIf="!alreadyAddedInCart">Add to cart</span>
+                  </button>
+                  <div [ngClass]='{addToCartAnimation: this.showAnimation}'  class="addToCartAnimation"></div>
                 </div>
               </div>
             </div>

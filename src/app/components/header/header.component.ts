@@ -24,22 +24,18 @@ export class HeaderComponent implements OnInit {
      this.headers = AppConfig.MENUS;
 
      this.subscription = this.shoppingCartService.getSubjectForCart().subscribe(message => { 
-       console.log('huma', message); 
        this.cartCount = message.value;
       });
-     console.log('in header-----', this.shoppingCartService.subjectValue );
-    //  this.shoppingCartService.subjectValue.subscribe((subjectValue: any) => {
-    //   console.log('hey subject working', subjectValue);
-    //   this.cartCount = subjectValue;
-    //   // this.lastSyncData = abc;
-    //   // this.userData = JSON.parse(localStorage.getItem("currentUser"));
-    // });
   }
   navLinkClicked() {
     let collapse1 = document.getElementById('navbar-collapse-1');
     let collapse2 = document.getElementById('navbar-collapse-2');
-    collapse1.classList.remove('in');
-    collapse2.classList.remove('in');
+    collapse1 && collapse1.classList.remove('in');
+    collapse2 && collapse2.classList.remove('in');
+      var elmnt = document.getElementById("contentUs");
+      elmnt.scrollIntoView({
+        behavior: 'smooth'
+      });
   }
 
   ngOnInit() {

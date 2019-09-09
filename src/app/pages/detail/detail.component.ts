@@ -22,6 +22,8 @@ export class DetailComponent implements OnInit {
     selectedOptions = [];
     more: boolean = false;
     count: number = 1;
+    showAnimation: boolean =  false;
+    alreadyAddedInCart: boolean = false;
     paitingDetail = { name : '',
                       description: '',
                       prize: '',
@@ -70,7 +72,7 @@ export class DetailComponent implements OnInit {
   
     galleryImage(detail) {
       let galleryImgArray = [];
-      let images = detail.images || ['assets/images/painting/image1.jpg', 'assets/images/painting/image1.jpg']
+      let images = detail.images || ['assets/images/other/Not_available_icon.jpg', 'assets/images/other/Not_available_icon.jpg']
       _.forEach(images, (data) => {
         galleryImgArray.push({
           small: data,
@@ -96,16 +98,26 @@ export class DetailComponent implements OnInit {
           // let images = this.paitingsList;
           this.galleryImage( this.paitingDetail) ;
         }
+        this.checkInCart();
       })
       this.imgSliderFun();
-   
+    }
+
+    checkInCart() {
+      let list = this.shoppingCartService.getProductList();
+      let obj = list.find(data => data.name === this.paitingDetail.name);
+      if (obj) {
+        this.alreadyAddedInCart = true;
+
+      }
+      else {
+        this.alreadyAddedInCart = false;
+      }
     }
 
     addToCart() {
-      console.log('add to cart----');
-      let item = {name: 'painting name'};
+      this.showAnimation = true;
       this.shoppingCartService.setSubjectForCart(this.paitingDetail);
-      // let xyz ={name: "huma"};
-      // this.shoppingCartService.setSubjectForHeader(xyz);
+      this.checkInCart();
     }
 }

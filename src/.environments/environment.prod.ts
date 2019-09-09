@@ -10,5 +10,6 @@ export const environment = {
 },
 // base_url: ' https://assignment-appstreet.herokuapp.com/api/v1',
 // base_url: 'https://eyecatchyapi.herokuapp.com/',
-base_url: 'http://localhost:9000/',
+// base_url: 'http://localhost:9000/',
+base_url: 'http://13.250.99.198:8080/',
 };

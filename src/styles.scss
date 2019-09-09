@@ -4,10 +4,11 @@
       padding: 0;
   }
   body {
-      font-family: 'HelveticaNeueLTStd-Roman';
+    //   font-family: 'HelveticaNeueLTStd-Roman';
+      font-family: 'Open Sans', sans-serif;
   }
   h1 {
-      font-size: 40px;
+      font-size: 30px;
       font-weight: bold;
       position: relative;
       &::after {
@@ -26,20 +27,22 @@
     text-transform: capitalize;
   }
   h3 {
-      text-transform: uppercase;
+      text-transform: capitalize;
   }
   p {
-      font-size: 25px;
+      font-size: 18px;
+      line-height: 30px;
+      color: #555;
   }
   .form-control {
       border-radius: 0;
   }
   .commonButton {
-      background-color: #49aaa0;
+      background-color: #ef8f2c;
       border: none;
       color: #fff;
       &:hover, &:active, &:focus {
-        background-color: #49aaa0!important;
+        background-color: #ef8f2c!important;
         color: #fff;
         border: none;
       }
@@ -50,9 +53,6 @@
   }
   .paddingMain {
       padding: 80px
-  }
-  .main-heading{
-      color: #fff;
   }
   .header {
       position: fixed;
@@ -80,7 +80,7 @@
   }
   .navbar-default .navbar-nav>li>a {
       columns: #000000;;
-      font-family: 'HelveticaNeueLTStd-Roman';
+    //   font-family: 'HelveticaNeueLTStd-Roman';
       font-size: 16px;
       text-transform: uppercase;
   }
@@ -148,7 +148,7 @@
       z-index: -1;
   }
   .top-banner-text h2 {
-      font-family: 'HelveticaNeueLTStd-Lt';
+    //   font-family: 'HelveticaNeueLTStd-Lt';
       font-size: 32px;
       line-height: 40px;
       color: #ffffff;
@@ -158,7 +158,7 @@
       z-index: 2;
   }
   .top-banner-text h2 span {
-      font-family: 'HelveticaNeueLTStd-Md';
+    //   font-family: 'HelveticaNeueLTStd-Md';
   }
   .top-banner-text .btn-orange {
       float: right;
@@ -167,10 +167,10 @@
       background-image: url(./assets/images/painting/image15.jpg);
   }
   .top-banner.gallery{
-    background-image: url(./assets/images/painting/image6.jpg);
+    background-image: url(./assets/images/painting/image1.jpg);
   }
   .top-banner.specification{
-    background-image: url(./assets/images/painting/image3.jpg);
+    background-image: url(./assets/images/painting/image15.jpg);
   }
   .top-banner.home {
       background-image: url(./assets/images/painting/image1.jpg);
@@ -224,13 +224,13 @@
       bottom: 125px;
   }*/
   .what-we-do h2 {
-      font-family: 'HelveticaNeueLTStd-Md';
+    //   font-family: 'HelveticaNeueLTStd-Md';
       font-size: 36px;
       color: #ffffff;
       margin-bottom: 40px;
   }
   .what-we-do p {
-      font-family: 'HelveticaNeueLTStd-Roman';
+    //   font-family: 'HelveticaNeueLTStd-Roman';
       font-size: 18px;
       color: #ffffff;
       line-height: 30px;
@@ -263,7 +263,7 @@
       list-style-type: none;
   }
   .footer-nav ul li a , .footer-nav ul li span{
-      font-family: 'HelveticaNeueLTStd-Lt';
+    //   font-family: 'HelveticaNeueLTStd-Lt';
       font-size: 15px;
       color: #fff;
       line-height: 24px;
@@ -399,7 +399,7 @@
       color: #2f3e42;
   }
   .services-section h2, .section-title {
-      font-family: 'HelveticaNeueLTStd-Md';
+    //   font-family: 'HelveticaNeueLTStd-Md';
       font-size: 36px;
       color: #006667;
       margin-bottom: 30px;
@@ -506,13 +506,13 @@
       margin-bottom: 50px;
   }
   .work-section h3 {
-      font-family: 'HelveticaNeueLTStd-Md';
+    //   font-family: 'HelveticaNeueLTStd-Md';
       font-size: 36px;
       color: #2f3e42;
       margin-bottom: 30px;
   }
   .icon-col {
-      font-family: 'HelveticaNeueLTStd-Roman';
+    //   font-family: 'HelveticaNeueLTStd-Roman';
       width: 295px;
       height: 184px;
       border: 1px solid rgba(118, 118, 118, 0.24);
@@ -534,7 +534,7 @@
       color: #2f3e42;
   }
   .icon-col .title {
-      font-family: 'HelveticaNeueLTStd-Md';
+    //   font-family: 'HelveticaNeueLTStd-Md';
       text-transform: uppercase;
   }
   .work-section.what-we-bg {
@@ -788,12 +788,13 @@
           height: 100%;
       }
       .top-banner-text {
-          width: 90%;
+          width: 70%;
           min-height: 160px;
           height: auto;
-          right: 15px;
           bottom: 10px;
           padding: 10px 20px 20px;
+          left: 50%;
+          transform: translateX(-50%);
       }
       .top-banner-text:after {
           top: -15px;
@@ -935,7 +936,8 @@
         font-size: 30px;
     }
     p {
-        font-size: 18px;
+        font-size: 16px;
+        line-height: 26px;
     }
     .about-us {
         .right-aboutus {

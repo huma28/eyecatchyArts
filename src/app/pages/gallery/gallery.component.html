@@ -18,7 +18,11 @@
     <h2 class="main-heading">Gallery</h2>
     <div *ngFor="let item of paitingsList; let i = index" class="collection-rows">
       <div class="col-xs-4 col-md-4 paddingImg">
-        <div (click)="clickOnItem(i)" class="inner-div" [style.backgroundImage]="'url(' + item.path+ ')'">
+        <div (click)="clickOnItem(i)" class="inner-div" [style.backgroundImage]="'url(' + item.path+ ')'" >
+          <div class="galleryImgOverlay" [class.soldClass]="!item.available"> 
+            <span *ngIf="item.available"> BUY</span>
+            <span *ngIf="!item.available"> SOLD</span>
+           </div>
         </div>
       </div>
     </div>
