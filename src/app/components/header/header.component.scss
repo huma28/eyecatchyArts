@@ -6,6 +6,9 @@
   background-color: #fff;
   .number {
     letter-spacing: 2px;
+    width: 40px;
+    white-space: nowrap;
+    overflow: visible;
     i {
       border: none;
       font-size: 20px;
@@ -21,6 +24,7 @@
     &:hover {
       a {
         text-decoration: none;
+        color: #49aaa0;
       }
     }
   }
@@ -104,13 +108,14 @@
       margin-left: -20%;
       text-align: center;
       font-family: 'Oregano', cursive;
-      font-size: 20px;
+      font-size: 24px;
       letter-spacing: 2px;
       font-weight: bold;
       cursor: pointer;
       &:hover {
         a {
           text-decoration: none;
+          color: #49aaa0;
         }
       }
     }

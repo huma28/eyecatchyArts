@@ -3,7 +3,7 @@ import * as _ from 'lodash';
 import * as firebase from 'firebase';
 import { Router, NavigationEnd } from '@angular/router';
 import { Observable } from 'rxjs';
-import {FirebaseService} from './app.firebase.service';
+// import {FirebaseService} from './app.firebase.service';
 import { element } from '../../node_modules/protractor';
 import { AuthService } from '../services/auth.service';
 import * as jwt from 'jsonwebtoken';
@@ -28,7 +28,7 @@ export class AppComponent {
   @Input() adressType: string;
   @ViewChild('addresstext') addresstext: any;
   constructor(private router: Router,
-    private firebaseService:FirebaseService,
+    // private firebaseService:FirebaseService,
     private authService: AuthService,
     public toastr: ToastsManager,
     vcr: ViewContainerRef,) {
@@ -54,15 +54,15 @@ export class AppComponent {
     // }, 0);
     // setTimeout(() => { console.log('now expire') , 300000})
    
-    var x = this.firebaseService.getBanner();
-    x.snapshotChanges().subscribe(item => {
-      item.forEach(element => {
-        var y = element.payload.toJSON();
-        y["$key"] = element.key;
-        this.data.push(y);
-      })
-      // console.log('item-----', this.data);
-    })
+    // var x = this.firebaseService.getBanner();
+    // x.snapshotChanges().subscribe(item => {
+    //   item.forEach(element => {
+    //     var y = element.payload.toJSON();
+    //     y["$key"] = element.key;
+    //     this.data.push(y);
+    //   })
+    //   // console.log('item-----', this.data);
+    // })
 
     this.router.events.subscribe((evt) => {
       if (!(evt instanceof NavigationEnd)) {

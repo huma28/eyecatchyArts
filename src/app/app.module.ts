@@ -23,9 +23,9 @@ import { routes } from './app.routes';
 import { environment } from '../.environments/environment';
 import { ButtonComponent } from 'app/components/button/button.component';
 import { SvgTextComponent } from 'app/components/svgText/SvgText.component';
+import { LoginComponent } from './pages/login/login.component';
 // import * as firebase from 'firebase';
 
-import { AwesomeShopService } from '../services/awesomeShope.service';
 import { HttpService } from '../services/http.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
@@ -36,6 +36,9 @@ import { FormSubmitService } from 'services/formSubmit.service';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
 import { ToasterService } from '../services/toaster.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
+import { AuthGuard } from './auth-guard.service';
 
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { ToastrModule } from 'ngx-toastr';
@@ -55,6 +58,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CartComponent,
     PaymentComponent,
     SvgTextComponent,
+    LoginComponent,
   ],
   imports: [
     CommonModule,
@@ -68,20 +72,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NgxGalleryModule,
     HttpModule,
     HttpClientModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp(environment.firebase, 'angular-auth-firebase'),
     AngularFireDatabaseModule,
+    AngularFireAuthModule,
     ToastModule.forRoot(),
     // BrowserAnimationsModule, // required animations module
     // ToastrModule.forRoot() // ToastrModule added
   ],
   providers: [
-            AwesomeShopService,
             HttpService,
             FirebaseService,
             AuthService,
             ShoppingCartService,
             FormSubmitService,
             ToasterService,
+            AuthGuard,
             ],
   bootstrap: [AppComponent]
 })

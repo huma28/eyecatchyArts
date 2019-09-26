@@ -18,13 +18,13 @@ export class AppConfig {
             navigateTo: 'specification'
         },
         {
-            name: 'Contect Us',
+            name: 'Contact Us',
             navigateTo: 'contactUs'
         },
-        {
-            name: 'Our Work',
-            navigateTo: 'aboutUs'
-        }
+        // {
+        //     name: 'Our Work',
+        //     navigateTo: 'aboutUs'
+        // }
     ];
 
 }
