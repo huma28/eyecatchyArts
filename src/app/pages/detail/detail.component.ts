@@ -4,9 +4,9 @@ import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gal
 import { ItemDetail } from 'modals/itemDetail';
 import * as _ from 'lodash';
 import { FirebaseService } from '../../app.firebase.service';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { ShoppingCartService } from 'services/shoppingCart.service';
 import {Observable} from 'rxjs/Observable';
+import { Router, CanActivate } from '@angular/router';
 
 @Component({
   selector: 'app-detail',
@@ -29,16 +29,15 @@ export class DetailComponent implements OnInit {
                       prize: '',
                       size: '',
                       };
-    // paitingsList: Observable<any>;
     constructor(
       private route: ActivatedRoute,
       private firebaseService:FirebaseService,
-      public shoppingCartService: ShoppingCartService) { }
+      public shoppingCartService: ShoppingCartService,
+      private router: Router) { }
   
     ngOnInit() {
       // this.shoppingCartService.setSubjectForCart();
       this.route.params.subscribe((params) => {
-        console.log("param", params, params.id)
         this.getDetail(params.id);
       });
     }
@@ -81,21 +80,16 @@ export class DetailComponent implements OnInit {
         });
       });
       this.galleryImages = galleryImgArray;
-      console.log('images-----------', this.galleryImages);
     }
   
     getDetail(id) {
      let x = this.firebaseService.paintingDetail(id);
      let obj = {};
       x.snapshotChanges().subscribe(item => {
-        console.log('detail page--------', item);
         for(let ele in item) {
           let i = item[ele].payload.toJSON();
           let key = item[ele].key;
           this.paitingDetail[key] = i;
-          // this.paitingsList.push({[key]: i});
-          console.log('finalllllll--', this.paitingDetail);
-          // let images = this.paitingsList;
           this.galleryImage( this.paitingDetail) ;
         }
         this.checkInCart();
@@ -105,19 +99,28 @@ export class DetailComponent implements OnInit {
 
     checkInCart() {
       let list = this.shoppingCartService.getProductList();
-      let obj = list.find(data => data.name === this.paitingDetail.name);
-      if (obj) {
-        this.alreadyAddedInCart = true;
-
-      }
-      else {
-        this.alreadyAddedInCart = false;
-      }
+     
+      list.valueChanges().subscribe(item => {
+        let obj = item.find(data => data.name === this.paitingDetail.name);
+        if (obj) {
+          this.alreadyAddedInCart = true;
+        }
+        else {
+          this.alreadyAddedInCart = false;
+        }
+        });
     }
 
     addToCart() {
-      this.showAnimation = true;
-      this.shoppingCartService.setSubjectForCart(this.paitingDetail);
-      this.checkInCart();
+
+      if  ( this.firebaseService.isLoggedIn() ) {
+        this.showAnimation = true;
+        // this.shoppingCartService.setSubjectForCart(this.paitingDetail);
+        this.shoppingCartService.setUserDetail(this.paitingDetail);
+        this.checkInCart();
+      }
+      else {
+        this.router.navigate(['login']);
+      }
     }
 }

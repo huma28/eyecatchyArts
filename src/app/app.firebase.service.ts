@@ -6,6 +6,7 @@ import { Router } from "@angular/router";
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject'; 
 // import {FileUpload} from './models/fileupload';
 // @Injectable()
  
@@ -13,9 +14,11 @@ import { Observable } from 'rxjs/Observable';
 export class FirebaseService {
     list: AngularFireList<any>;
     detail: AngularFireList<any>;
-    
+    allDetail: AngularFireList<any>;
+    allOrders = [];
 private user: Observable<firebase.User>;
 private userDetails: firebase.User = null;
+public userData = new Subject<any>();
   constructor(private firebase: AngularFireDatabase, private _firebaseAuth: AngularFireAuth, private router: Router) {
     this.user = _firebaseAuth.authState;
 
@@ -24,6 +27,7 @@ private userDetails: firebase.User = null;
         if (user) {
           this.userDetails = user;
           console.log('subscribe user in auth service', this.userDetails);
+          this.userData.next({ name: this.userDetails.displayName,  email: this.userDetails.email, });
         } else {
           this.userDetails = null;
         }
@@ -44,19 +48,26 @@ private userDetails: firebase.User = null;
       return true;
     }
   }
-  setUserDetail(){
-    console.log("current user--------", this._firebaseAuth.auth.currentUser, "----uid", this._firebaseAuth.auth.currentUser.uid, "database-----",  );
-    console.log(this.userDetails.displayName, this.userDetails.email, this.userDetails.photoURL);
+
+  documentToDomainObject = _ => {
+    const object = _.payload.doc.data();
+    object.id = _.payload.doc.id;
+    return object;
+  }
+
+  async setUserDetail(data){
     let uid = this._firebaseAuth.auth.currentUser.uid;
-    let ref2 = this.firebase.database.ref('allUsers');
-    let order = [1, 2, 3];
-    ref2.child(uid).set({
-      name: this.userDetails.displayName || 'Friend',
-      email: this.userDetails.email,
-      photo: this.userDetails.photoURL,
-      orders: order,
-      history: [4, 5]
-    });
+    this.allDetail = this.firebase.list(`allUsers/${uid}/orders`);
+    this.allDetail.push(data);
+  
+    // this.userData.next({ name: this.userDetails.displayName,  email: this.userDetails.email, });
+  }
+
+  getUserDataObservable(): Observable<any> {
+    return this.userData.asObservable();
+  }
+  getUserData() {
+    return this.userDetails;
   }
 
   logout() {
@@ -71,7 +82,6 @@ private userDetails: firebase.User = null;
 
   paintingDetail(id) {
     this.detail = this.firebase.list(`paintingList/${id}`);
-    console.log('huma---', this.detail);
     return this.detail;
   }
 

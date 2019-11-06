@@ -12,7 +12,6 @@ export class ButtonComponent implements OnInit {
     @Input() textColor: string;
     
   constructor() { 
-    //  this.banners = PictureConfig.banners;
   }
 
   ngOnInit() {

@@ -27,6 +27,13 @@
         <div class="webName visible-xs">
           <a routerLink="/"> EyecatchyArt </a>
         </div>
+        <div class="userLogin">
+            
+          <span *ngIf="this.userDetail"> Hi {{this.userDetail.name.substr(0,this.userDetail.name.indexOf(' '))}} </span>
+          <span *ngIf="!this.userDetail">
+           <a routerLink="/login">Login</a>
+          </span>
+        </div>
         <div class="icon-cart cartCount">
           <span *ngIf="cartCount > 0">{{cartCount}} </span>
           <!-- <app-button [text]="button.buttonText" [border]="button.borderColor" [textColor]="button.textColor"></app-button> -->

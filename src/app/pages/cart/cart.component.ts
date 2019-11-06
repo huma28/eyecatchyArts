@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ShoppingCartService } from 'services/shoppingCart.service';
 import { Subscription } from 'rxjs/Subscription';
 import { ButtonComponent } from 'app/components/button/button.component';
+import { AngularFireList } from 'angularfire2/database';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -14,7 +15,8 @@ export class CartComponent implements OnInit {
   public isCollapsed: boolean;
   cartCount = 0;
   cartList: Subscription;
-  list = [];
+  list=[];
+  data:AngularFireList<any[]>;
   button={
     buttonText:"Book Now",
     borderColor: "#e8e1d8",
@@ -26,20 +28,20 @@ export class CartComponent implements OnInit {
 
      this.cartList = this.shoppingCartService.getSubjectForCart().subscribe(message => { 
         this.cartCount = message.value;
-        console.log('here cart', message);
         this.list = message.list;
       });
   }
 
   ngOnInit() {
     this.isCollapsed = true;
-    this.list = this.shoppingCartService.getProductList();
-    console.log('cart list ---', this.list);
+    let cartData = this.shoppingCartService.getProductList();
+
+    cartData.valueChanges().subscribe(item => {
+    this.list = item;
+    });  
   }
   removeItem(index) {
-    console.log("delete item");
     this.shoppingCartService.removeItem(index);
-
   }
 
 }

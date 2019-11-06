@@ -37,6 +37,9 @@
   .icon-cart {
     display: none;
   }
+  .userLogin {
+    display: none;
+  }
 }
 .header-nav {
   // background-color:#e8e1d8;
@@ -63,6 +66,9 @@
   .top-header {
     justify-content: center;
   }
+  .navbar-toggle {
+    padding: 9px 0;
+  }
   .header-nav {
     ul {
       width: 100%;
@@ -84,7 +90,7 @@
   }
   .header-mobile {
     position: relative;
-    padding: 0 20px;
+    padding: 0 10px;
     height: 55px;
     button {
       height: 35px;
@@ -98,14 +104,25 @@
       display: table;
       float: right;
     }
+    .userLogin {
+      display: inline;
+      position: absolute;
+      top: 50%;
+      // margin-top: -15px;
+      right: 15%;
+      width: 20%;
+      text-align: center;
+      font-size: 12px;
+      transform: translateY(-50%);
+    }
     .webName {
       display: table;
       position: absolute;
       top: 50%;
       margin-top: -15px;
-      left: 50%;
+      left: 15%;
       width: 40%;
-      margin-left: -20%;
+      // margin-left: -20%;
       text-align: center;
       font-family: 'Oregano', cursive;
       font-size: 24px;

@@ -8,8 +8,14 @@ import { ContectUsComponent } from './pages/contect-us/contect-us.component';
 import { DetailComponent } from './pages/detail/detail.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { PaymentComponent } from './pages/payment/payment.component';
+import { LoginComponent } from './pages/login/login.component';
+import { AuthGuard } from './auth-guard.service';
 // Define which component should be loaded based on the current URL
 export const routes: Routes = [
+    {
+        path: 'login',
+        component: LoginComponent,
+    },
     {
         path: 'home',
         component: HomeComponent,
@@ -42,6 +48,7 @@ export const routes: Routes = [
     },
     {
         path: 'cart',
+        canActivate: [AuthGuard],
         component: CartComponent,
         // canActivate: [AuthGuard]
     },

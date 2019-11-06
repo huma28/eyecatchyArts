@@ -15,8 +15,19 @@
 </section>
 <section class="panel back-picture" id="what-we-do">
   <div class="container">
-    <h2 class="main-heading">Gallery</h2>
-    <div *ngFor="let item of paitingsList; let i = index" class="collection-rows">
+    <h1 class="main-heading">Gallery</h1>
+    
+    <div class="sub-menu">
+      <button class="" (click)="tabClicked('all')">All</button>
+      <button class="" (click)="tabClicked(1)">Relegion</button>
+      <button class="" (click)="tabClicked(2)">Positive Energy</button>
+      <button class="" (click)="tabClicked(3)">Scenery</button>
+      <button class="" (click)="tabClicked(4)">Animal love</button>
+      <button class="" (click)="tabClicked(5)">Romantic</button>
+    </div>
+
+
+    <div *ngFor="let item of showPaintingList; let i = index" class="collection-rows">
       <div class="col-xs-4 col-md-4 paddingImg">
         <div (click)="clickOnItem(i)" class="inner-div" [style.backgroundImage]="'url(' + item.path+ ')'" >
           <div class="galleryImgOverlay" [class.soldClass]="!item.available"> 

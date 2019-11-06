@@ -67,7 +67,7 @@
               </span>
             </div>
             <div class="form-group">
-              <textarea name="message" rows="5" cols="30" class="form-control" #message="ngModel" [(ngModel)]="paintingForm.message" placeholder="Enter message" required>The cat was playing in the garden.</textarea>
+              <textarea name="message" rows="5" cols="30" class="form-control" #message="ngModel" [(ngModel)]="paintingForm.message" placeholder="Enter message" required></textarea>
               <!-- <input type="text-area" class="form-control" name="message" #message="ngModel" [(ngModel)]="paintingForm.message" placeholder="Enter message" required> -->
               <span class="help-block" *ngIf="message.errors?.required && message.touched">
                 Message is required

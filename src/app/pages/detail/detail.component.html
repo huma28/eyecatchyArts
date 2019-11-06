@@ -36,7 +36,7 @@
                   </div>
                 </div>
                 <div class="cart-btn">
-                  <button type="button" class="btn btn-lg btn-block" (click)="addToCart()" [disabled]="alreadyAddedInCart">
+                  <button type="button" class="btn btn-lg btn-block" (click)="addToCart()" [disabled]="alreadyAddedInCart || !paitingDetail.available">
                     <span *ngIf="alreadyAddedInCart">Added - go to cart</span>
                     <span *ngIf="!alreadyAddedInCart">Add to cart</span>
                   </button>

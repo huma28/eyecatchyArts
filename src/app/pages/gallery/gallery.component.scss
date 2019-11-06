@@ -13,12 +13,22 @@ input.ng-invalid.ng-dirty{
     font-family: 'Oregano', cursive;
     color: #31708f;
 }
-// .collection-rows{
-    // display: inline-flex;
-// .col-md-4{
-//     padding: 15px;
-// }
 
+.sub-menu {
+    background-color: #000;
+    padding: 5px;
+    margin-bottom: 10px;
+    button {
+        padding: 3px 5px;
+        margin-right: 10px;
+        border-radius: 3px;
+        font-size: 15px;
+        border: none;
+        margin-top: 5px;
+        background: #ef8f2c;
+        color: #fff;
+    }
+}
     .inner-div{
         background-size: contain;
         background-repeat: no-repeat;
@@ -71,11 +81,9 @@ input.ng-invalid.ng-dirty{
         text-align: center;
         padding: 15px 0px;
         button:nth-child(2) {
-        // background: red;
         margin-left: 20px;
         }   
     }
-// }
 .gallery-modal{
     img{
         width: 100%;
