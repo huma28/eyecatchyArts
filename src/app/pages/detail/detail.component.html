@@ -1,0 +1,49 @@
+<div class="detail-main">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 slider-div">
+              <ngx-gallery [options]="galleryOptions" [images]="galleryImages" class="carousel"></ngx-gallery>
+            </div>
+            <div class="col-md-4 right-div-detail">
+              <div class="card-section">
+                <h4>{{paitingDetail.name}}</h4>
+                <!-- <p>{{ (detailData.description.length > 120 && !more) ? detailData.description.slice(0, 120) :detailData.description}}</p> -->
+                <p>{{paitingDetail.description}}</p>
+                <!-- <span *ngIf="detailData.description.length > 150" (click)="more=!more" class="more">{{more ? '-LESS' : '+MORE'}}</span> -->
+              </div>
+              <div class="card-section">
+                <div class="rupees">
+                  <!-- <span>{{detailData.showData.sale_price | currency:"&#8377;"}} </span> -->
+                  <span> {{paitingDetail.prize | currency:"&#8377;"}} </span>
+                  <del class="delete-text">${{paitingDetail.prize + 1500}}</del>
+                </div>
+                <div class="sub-heading">Sale message here</div>
+                <p>local taxes include </p>
+              </div>
+              <div class="bottom-section">
+                <div class="colors-div">
+                  <div class="sub-heading">Size</div>
+                </div>
+                <div class="size-div">
+                  <div class="sub-heading">{{paitingDetail.size}}</div>
+                </div>
+                <div class="">
+                  <div class="sub-heading">Quatity</div>
+                  <div class="btn-group btn-group-sm quantity" role="group" aria-label="Basic example">
+                    <button [attr.disabled]="true" type="button" class="btn" (click)="count=count-1">-</button>
+                    <button [attr.disabled]="true" type="button" class="btn">{{count}}</button>
+                    <button [attr.disabled]="true" type="button" class="btn" (click)="count=count+1">+</button>
+                  </div>
+                </div>
+                <div class="cart-btn">
+                  <button type="button" class="btn btn-lg btn-block" (click)="addToCart()" [disabled]="alreadyAddedInCart || !paitingDetail.available">
+                    <span *ngIf="alreadyAddedInCart">Added - go to cart</span>
+                    <span *ngIf="!alreadyAddedInCart">Add to cart</span>
+                  </button>
+                  <div [ngClass]='{addToCartAnimation: this.showAnimation}'  class="addToCartAnimation"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>

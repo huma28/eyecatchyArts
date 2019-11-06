@@ -1,0 +1,29 @@
+
+.loginWrapper {
+  background-color: #f5f5f5;
+  .loginInner{
+    display: flex;
+    min-height: 500px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    .loginContainer {
+      width: 70%;
+    }
+    .loginLabel {
+      margin-bottom: 40px;
+    }
+    .socialButotn {
+      max-width: 200px;
+      margin-bottom: 15px;
+    }
+    .note {
+      font-size: 12px;
+    }
+  }
+}
+
+// --------respomsive-------------
+@media (max-width: 767px) {
+  
+}

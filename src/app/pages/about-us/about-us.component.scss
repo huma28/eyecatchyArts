@@ -5,15 +5,12 @@
 }
 .peopleListWrap {
    position: relative;
-    /* display: inline-block; */
     width: 90%;
     padding: 28px;
     border: 1px solid #fff;
     background: #0a2e52;
     border-radius: 14px;
     min-height: 186px;
-    /* margin-right: 38px; */
-    /* margin-top: 90px; */
     margin: 25px auto;
 }
 
@@ -33,7 +30,6 @@
 .peopleDetails .detailss {
    position: relative;
     padding-left: 156px;
-    /* margin-right: 100px; */
     height: 85px;
     padding-top: 37px;
 }
@@ -43,7 +39,6 @@
     position: absolute;
     border-left: 5px solid #fbb415;
     border-radius: 4px;
-    /* top: 37px; */
     width: 4px;
     left: 40%;
     height: 100%;
@@ -53,9 +48,7 @@
     position: absolute;
     height: 120px;
     width: 120px;
-    /*left: -39px;*/
     border-top-left-radius: 65px;
-    /*top: -66px;*/
     border-bottom-left-radius: 66px;
     border-top-right-radius: 65px;
     border: 2px solid #ffffff;

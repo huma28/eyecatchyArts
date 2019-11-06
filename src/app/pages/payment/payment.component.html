@@ -1,0 +1,78 @@
+<div class="detail-main">
+  <div class="container">
+    <div class="row">
+      <h1>Select Delivery Address</h1>
+
+      <form class="formContact paymentForm" #buyForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <input type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]="paintingForm.name" placeholder="Enter full name" required>
+          <span class="help-block" *ngIf="name.errors?.required && name.touched">
+            User name is required
+          </span>
+        </div>
+        <div class="form-group">
+          <input type="email" class="form-control" name="email" #email="ngModel" [(ngModel)]="paintingForm.email" placeholder="Enter email" [email]="paintingForm.email !== ''">
+          <span class="help-block" *ngIf="email.errors?.required && email.touched">
+            Email is required
+          </span>
+          <span class="help-block" *ngIf="email.errors?.email && email.touched">
+            Email is invalid
+          </span>
+        </div>
+        <div class="form-group">
+          <input type="number" class="form-control" name="phone" #phone="ngModel" [(ngModel)]="paintingForm.phone" placeholder="Enter mobile number" required>
+          <span class="help-block" *ngIf="phone.errors?.required && phone.touched">
+            Phone is required
+          </span>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" name="pincode" #pincode="ngModel" [(ngModel)]="paintingForm.pincode" placeholder="Enter pincode" required>
+          <span class="help-block" *ngIf="pincode.errors?.required && pincode.touched">
+              pincode is required
+          </span>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" name="houseNo" #houseNo="ngModel" [(ngModel)]="paintingForm.houseNo" placeholder="Enter Flat, House no., Building, Company, Apartment" required>
+          <span class="help-block" *ngIf="houseNo.errors?.required && houseNo.touched">
+              House no. is required
+          </span>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" name="colony" #colony="ngModel" [(ngModel)]="paintingForm.colony" placeholder="Enter Area, Colony, Street, Sector, Village">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" name="landMark" #landMark="ngModel" [(ngModel)]="paintingForm.landMark" placeholder="Enter Landmark e.g. near apollo hospital">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" name="city" #city="ngModel" [(ngModel)]="paintingForm.city" placeholder="Enter Town/City: " required>
+          <span class="help-block" *ngIf="city.errors?.required && city.touched">
+              City name is required
+          </span>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" name="state" #state="ngModel" [(ngModel)]="paintingForm.state" placeholder="Enter State " required>
+          <span class="help-block" *ngIf="state.errors?.required && state.touched">
+              State name is required
+          </span>
+        </div>
+          
+        <!-- <div class="form-group">
+          <input type="text" class="form-control" name="address" #address="ngModel" [(ngModel)]="paintingForm.address" placeholder="Enter address" required>
+          <span class="help-block" *ngIf="address.errors?.required && address.touched">
+            Address is required
+          </span>
+        </div> -->
+        <div class="form-group">
+          <textarea name="address" rows="5" cols="30" class="form-control" #address="ngModel" [(ngModel)]="paintingForm.address" placeholder="Enter full address" required></textarea>
+          <!-- <input type="text-area" class="form-control" name="message" #message="ngModel" [(ngModel)]="paintingForm.message" placeholder="Enter message" required> -->
+          <span class="help-block" *ngIf="address.errors?.required && address.touched">
+            Address is required
+          </span>
+        </div>
+        <div clas>
+          <button type="submit" class="btn btn-default commonButton" [disabled]="buyForm.invalid">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

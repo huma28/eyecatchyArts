@@ -56,4 +56,53 @@ ul li {
     padding: 10px;
     border-radius: 15px;
 }
-    
+.creativity {
+    background-color: #f1f1f1;
+}
+
+@keyframes fade-in {
+    from {opacity: 0; transform: scale(.7,.7)}
+    to {opacity: 1;}
+}
+.animate {
+  animation: fade-in 1.4s;
+}
+.opacityZero {
+    opacity: 0;
+  }
+.video{
+    width: 100%;
+    video{
+        width: 100%;
+    }
+}
+
+
+// ----about us -----
+.mainAbout {
+    padding-bottom: 20px;
+}
+.name {
+    color: #eabc1c;
+    font-size: 22px;
+}
+.occupation {
+    color: grey;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+.aboutFounder {
+    padding-bottom: 5px;
+}
+
+
+// --------respomsive-------------
+@media (max-width: 767px) {
+  .mainAbout{
+    display: flex;
+    flex-direction: column;
+    .order {
+      order: 2;
+    }
+  }
+}

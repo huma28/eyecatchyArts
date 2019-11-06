@@ -1,0 +1,10 @@
+.contentArea {
+    margin: 139px auto 0 auto;
+    max-width: 1440px;
+}
+
+@media (max-width: 767px) { 
+    .contentArea {
+       margin: 55px auto 0 auto;
+    }
+}

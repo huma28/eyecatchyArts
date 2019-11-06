@@ -1,28 +1,62 @@
 <!--header-->
 <header class="header">
   <nav class="navbar navbar-default">
-    <div class="container">
+    <div class="">
+      <div class="top-header hidden-xs">
+        <div class="number hidden-sm">
+            <i class="fa fa-phone" aria-hidden="true"></i>
+          8094494948
+        </div>
+        <div class="name">
+          <a routerLink="/"> EyecatchyArt </a>
+        </div>
+        <div class="book cartCount">
+          <span *ngIf="cartCount > 0">{{cartCount}} </span>
+          <!-- <app-button [text]="button.buttonText" [border]="button.borderColor" [textColor]="button.textColor"></app-button> -->
+          <a routerLink="/cart"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i></a>
+        </div>
+      </div>
       <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+      <div class="navbar-header header-mobile">
+        <button type="button" class="navbar-toggle collapsed icon-left" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" [routerLink]="['home']">
-          <img src="assets/images/other/logo.png" alt="" style="width:150px; height:50px" />
-        </a>
+        <div class="webName visible-xs">
+          <a routerLink="/"> EyecatchyArt </a>
+        </div>
+        <div class="userLogin">
+            
+          <span *ngIf="this.userDetail"> Hi {{this.userDetail.name.substr(0,this.userDetail.name.indexOf(' '))}} </span>
+          <span *ngIf="!this.userDetail">
+           <a routerLink="/login">Login</a>
+          </span>
+        </div>
+        <div class="icon-cart cartCount">
+          <span *ngIf="cartCount > 0">{{cartCount}} </span>
+          <!-- <app-button [text]="button.buttonText" [border]="button.borderColor" [textColor]="button.textColor"></app-button> -->
+          <a routerLink="/cart"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i></a>
+        </div>
+        <!-- <button type="button" class="navbar-toggle collapsed icon-dot" data-toggle="collapse" data-target="#navbar-collapse-2" aria-expanded="false">
+          <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+        </button> -->
       </div>
-      <div class="collapse navbar-collapse" id="navbar-collapse-1">
-        <div class="navbar-right">
+      <div class="collapse navbar-collapse header-nav" id="navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li *ngFor="let header of headers; let i = index">
-              <a class="collapsed" [routerLink]="header.navigateTo" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" data-toggle="collapse" aria-expanded="false">{{header.name}}</a>
+              <a class="collapsed" [routerLink]="header.navigateTo" (click)="navLinkClicked()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" data-toggle="collapse" aria-expanded="false">{{header.name}}</a>
+            </li>
+            <li>
+              <div class="number visible-xs">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                8094494948
+              </div>
             </li>
           </ul>
-        </div>
       </div>
+      <!--==== -->
     </div>
   </nav>
 </header>

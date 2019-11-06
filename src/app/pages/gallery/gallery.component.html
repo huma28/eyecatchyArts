@@ -15,115 +15,25 @@
 </section>
 <section class="panel back-picture" id="what-we-do">
   <div class="container">
-    <h2 class="main-heading">Gallery</h2>
-    <ng-template #template>
-      <div class="modal-header">
-        <h4 class="modal-title pull-left">
-          <img src="assets/images/other/logo.png" alt="" style="width:150px; height:50px" />
-        </h4>
-        <button type="button" class="close-btn pull-right" aria-label="Close" (click)="modalRef.hide()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="gallery-modal modal-body">
-        <img src={{url}} alt="" class="">
-      </div>
-    </ng-template>
-    <!-- buy modal -->
-    <ng-template #template1>
-      <div class="modal-header">
-        <h4 class="modal-title pull-left">
-          <img src="assets/images/other/logo.png" alt="" style="width:150px; height:50px" />
-        </h4>
-        <button type="button" class="close-btn pull-right" aria-label="Close" (click)="modalRef.hide()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="gallery-modal modal-body">
-        <div class="">
-          <div class="row detailDiv">
-            <div class="col-md-6">
-              <label>Painting name: </label>{{paintingData.name}}
-            </div>
-            <div class="col-md-6">
-              <label>Prize: </label> {{paintingData.prize}} /_
-            </div>
-            <div class="col-md-6">
-              <label> Size: </label> {{paintingData.size}}
-            </div>
-            <div class="col-md-6">
-              <label>Artist name: </label> Huma Sadiya
-            </div>
-          </div>
-          <form class="formContact" #buyForm="ngForm" (ngSubmit)="onSubmit(paintingForm, template1, templateModal)">
-            <div class="form-group">
-              <label for="pwd">Name:</label>
-              <input type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]="paintingForm.name" placeholder="Enter name" required>
-              <span class="help-block" *ngIf="name.errors?.required && name.touched">
-                User name is required
-              </span>
-            </div>
-            <div class="form-group">
-              <label for="email">Email address:</label>
-              <input type="email" class="form-control" name="email" #email="ngModel" [(ngModel)]="paintingForm.email" placeholder="Enter email" required [email]="paintingForm.email !== ''">
-              <span class="help-block" *ngIf="email.errors?.required && email.touched">
-                Email is required
-              </span>
-              <span class="help-block" *ngIf="email.errors?.email && email.touched">
-                Email is invalid
-              </span>
-            </div>
-            <div class="form-group">
-              <label for="pwd">Phone:</label>
-              <input type="number" class="form-control" name="phone" #phone="ngModel" [(ngModel)]="paintingForm.phone" placeholder="Enter phone number" required>
-              <span class="help-block" *ngIf="phone.errors?.required && phone.touched">
-                Phone is required
-              </span>
-            </div>
-            <div class="form-group">
-              <label for="pwd">Address:</label>
-              <input type="text" class="form-control" name="address" #address="ngModel" [(ngModel)]="paintingForm.address" placeholder="Enter address" required>
-              <span class="help-block" *ngIf="address.errors?.required && address.touched">
-                Address is required
-              </span>
-            </div>
-            <div class="form-group">
-              <label for="pwd">Message:</label>
-              <input type="text-area" class="form-control" name="message" #message="ngModel" [(ngModel)]="paintingForm.message" placeholder="Enter message" required>
-              <span class="help-block" *ngIf="message.errors?.required && message.touched">
-                Message is required
-              </span>
-            </div>
-            <button type="submit" class="btn btn-default" [disabled]="buyForm.invalid">Submit</button>
-          </form>
-        </div>
-      </div>
-    </ng-template>
-    <!-- buy modal end -->
-    <!-- success modal -->
-    <ng-template #templateModal>
-      <div class="modal-header">
-        <h4 class="modal-title pull-left">
-          <img src="assets/images/other/logo.png" alt="" style="width:150px; height:50px" />
-        </h4>
-        <button type="button" class="close-btn pull-right" aria-label="Close" (click)="modalRef.hide()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="gallery-modal modal-body thanks-modal">
-        <!-- <img src={{url}} alt="" class=""> -->
-        <p> <span>Thanks</span> for sharing your information </p>
-        <p> We will contact you soon. </p>
-      </div>
-    </ng-template>
-    <!-- buy model end -->
-    <div *ngFor="let slide of multiSlider; let i = index" class="row collection-rows">
-      <div *ngFor="let innerSlide of multiSlider[i]" class="col-sm-12 col-md-4">
-        <div (click)="openModalImg(template, innerSlide.path)" class="inner-div">
-          <img src={{innerSlide.path}} alt="" class="">
-        </div>
-        <div class="btn-div">
-          <button (click)="openModalBuy(template1, innerSlide)" class="buyButton"> Buy Now </button>
+    <h1 class="main-heading">Gallery</h1>
+    
+    <div class="sub-menu">
+      <button class="" (click)="tabClicked('all')">All</button>
+      <button class="" (click)="tabClicked(1)">Relegion</button>
+      <button class="" (click)="tabClicked(2)">Positive Energy</button>
+      <button class="" (click)="tabClicked(3)">Scenery</button>
+      <button class="" (click)="tabClicked(4)">Animal love</button>
+      <button class="" (click)="tabClicked(5)">Romantic</button>
+    </div>
+
+
+    <div *ngFor="let item of showPaintingList; let i = index" class="collection-rows">
+      <div class="col-xs-4 col-md-4 paddingImg">
+        <div (click)="clickOnItem(i)" class="inner-div" [style.backgroundImage]="'url(' + item.path+ ')'" >
+          <div class="galleryImgOverlay" [class.soldClass]="!item.available"> 
+            <span *ngIf="item.available"> BUY</span>
+            <span *ngIf="!item.available"> SOLD</span>
+           </div>
         </div>
       </div>
     </div>
